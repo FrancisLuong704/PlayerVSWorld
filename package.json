@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/YoungFrank95/PlayerVSWorld/issues"
   },
-  "homepage": "https://github.com/YoungFrank95/PlayerVSWorld#readme"
+  "homepage": "https://github.com/YoungFrank95/PlayerVSWorld#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }

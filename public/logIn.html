@@ -5,40 +5,32 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/uikit/uikit.css">
         <title>PlayerVSWorld</title>
     </head>
 
     <body>
         <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-3">Player VS World</h1>
+            <div class="uk-container" ">
+                <h1 class=" uk-column-1-3">Player VS World</h1>
                 <p class="lead">WELCOME</p>
                 <hr class="my-2">
                 <p>Log in Below!</p>
                 <p class="lead">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                placeholder="Enter email">
+                    <form class="uk-grid-small" uk-grid>
+                        <div class="uk-width-1-1">
+                            <input class="uk-input" type="text" placeholder="email">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <div class="uk-width-1-1">
+                            <input class="uk-input" type="text" placeholder="password">
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+
                     </form>
                 </p>
             </div>
         </div>
-    </body>    
-  <script src="assets/uikit/uikit.js"></script>
-  <script src="assets/uikit/uikit-icons.js"></script>
+    </body>
+    <script src="assets/uikit/uikit.js"></script>
+    <script src="assets/uikit/uikit-icons.js"></script>
+
 </html>

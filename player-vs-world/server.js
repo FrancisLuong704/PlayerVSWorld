@@ -13,20 +13,17 @@ const db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 require("./routes/api-routes.js")(app);
-
+app.get("/Login", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/login.html"));
+});
 // Send every request to the React app
 // Define any API routes before this runs
-<<<<<<< HEAD
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-=======
-app.get("/Login", function(req, res) {
-  res.sendFile(path.join(__dirname, "./public/login.html"));
->>>>>>> ab41557aa26ccfdd9ebc4be3cb2f6ef27ff64729
-});
-//app.use(routes);
-db.sequelize.sync({ force: true }).then(function() {
-  app.listen(PORT, function() {
-    console.log(`🌎  ==> API Server now listening on PORT ${ PORT}`);
+})
+  //app.use(routes);
+  db.sequelize.sync({ force: true }).then(function () {
+    app.listen(PORT, function () {
+      console.log(`🌎  ==> API Server now listening on PORT ${PORT}`);
+    });
   });
-});

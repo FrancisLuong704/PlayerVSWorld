@@ -1,25 +1,23 @@
 {
-  "name": "player-vs-world",
-  "version": "0.1.0",
-  "private": true,
   "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "concurrently": "^4.0.1",
+    "express": "^4.16.4",
+    "mysql2": "^1.6.4",
+    "path": "^0.12.7",
+    "react-scripts": "^2.1.1",
+    "sequelize": "^4.41.2"
   },
+  "name": "player-vs-world",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently  \"nodemon --ignore 'client/*'\" \"npm run client \"",
+    "client": "cd client && npm run start",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  }
 }

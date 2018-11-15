@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import NavTabs from "./components/NavTabs";
+import Profile from "./components/pages/Profile";
+import Login from "./components/pages/Login";
+import Survey from "./components/pages/Survey";
+import SignUp from "./components/pages/SignUp";
+import Main from "./components/pages/Main";
+import Link from "./components/pages/Link";
+import MakeLink from "./components/pages/MakeLink";
 import './App.css';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <Router>
+        <div>
+          <NavTabs />
+          <Route exact path="/Profile" component={Profile} />
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/Survey" component={Survey} />
+          <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/Main" component={Main} />
+          <Route exact path="/Link" component={Link} />
+          <Route exact path="/MakeLink" component={MakeLink} />
+        </div>
+      </Router>
+    )
   }
-}
+};
 
 export default App;

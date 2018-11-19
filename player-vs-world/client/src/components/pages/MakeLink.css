@@ -1,8 +1,14 @@
 /* pvw title css */
+
 .pvw {
     margin-left: 2.5%;
-    font-size: 450%;
+    color: white;
 }
+.heading {
+    margin-left: 2.5%;
+    color: white;
+}
+
 /* newLink css */
 .newLink {
     margin-left: 2.5%;

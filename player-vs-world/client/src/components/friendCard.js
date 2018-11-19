@@ -1,7 +1,7 @@
 import React from "react";
-import "./friendCard.css"
+import "./FriendCard.css"
 
-const friendCard  = () => (
+const FriendCard  = () => (
 <div className="uk-container uk-margin-small friendCard">
     <div>
         <div className="user-profilePic-thumb"></div>

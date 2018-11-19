@@ -1,9 +1,10 @@
 import React from "react";
+import "./SignUp.css";
 
 const SignUp = () => (
     <div className="uk-container uk-text-center@s">
     {/* title  */}
-        <h1 className="uk-padding-large uk-heading-primary">Player VS World</h1>
+        <h1 className="uk-padding-large uk-heading-primary signupTitle">Player VS World</h1>
         {/* start form */}
         <form>
             {/* First Name Input */}

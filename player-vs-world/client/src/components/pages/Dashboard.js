@@ -4,11 +4,9 @@ import "./Dashboard.css";
 const Dashboard = () => (
   // page container
   <div className="uk-container-large page-container">
-    {/* title and dashboard title container */}
-    <div className="uk-margin-medium-left">
-      <h1 className="uk-heading-primary pvw">Player VS World</h1>
-      <h1 className="prof">My Profile</h1>
-    </div>
+    {/* title and dashboard title */}
+      <h1 className="uk-heading-primary uk-margin-medium-left pvw">Player VS World</h1>
+      <h1 className="uk-margin-medium-left prof">My Profile</h1>
     {/* card container */}
     <div className="cardRows">
       {/* friend card */}

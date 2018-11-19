@@ -1,11 +1,4 @@
 html {
-<<<<<<< HEAD
-    background: #363F6D;
-    background: -moz-linear-gradient(-45deg, #363F6D 0%, #1C6EA4 62%, #6998A5 100%);
-    background: -webkit-linear-gradient(-45deg, #363F6D 0%, #1C6EA4 62%, #6998A5 100%);
-    background: linear-gradient(135deg, #363F6D 0%, #1C6EA4 62%, #6998A5 100%);
-
-=======
     background: #363F6D no-repeat;
     background: -moz-linear-gradient(-45deg, #363F6D 0%, #1C6EA4 62%, #6998A5 100%);
     background: -webkit-linear-gradient(-45deg, #363F6D 0%, #1C6EA4 62%, #6998A5 100%);
@@ -14,5 +7,4 @@ html {
     background-size: cover;
     height: 100%;
     width: 100%;
->>>>>>> ea32b2a78bfa90992475ec4be8f1f6ec82d166fb
 }

@@ -12,7 +12,7 @@ var path = require("path");
 // Routes
 // =============================================================
 module.exports = function (app) {
-  // Get route for returning posts of a specific category
+  
   app.post("/api/mail/receiver", function (req, res) {
     db.Mail.findAll({
       where: {
@@ -56,7 +56,7 @@ module.exports = function (app) {
       })
 
   })
-  // POST route for saving a new messages
+//sending a message 
   app.post("/api/mail/send", function (req, res) {
 
     db.Mail.create({

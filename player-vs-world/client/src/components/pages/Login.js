@@ -3,7 +3,7 @@ import React from "react";
 const Login = () => (
     <div className="uk-container uk-text-center@s">
     {/* Title */}
-        <h1 className="uk-heading-primary uk-padding-large">Player VS World</h1>
+        <h1 className="uk-heading-primary uk-padding-large pvw">Player VS World</h1>
         {/* form start */}
         <form>
             {/* Email Input */}

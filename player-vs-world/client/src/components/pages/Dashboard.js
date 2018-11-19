@@ -1,4 +1,5 @@
 import React from "react";
+import friendCard from "../friendCard";
 import "./Dashboard.css";
 
 const Dashboard = () => (
@@ -16,6 +17,7 @@ const Dashboard = () => (
         <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
           <h2 className="uk-card-title cardTitle">My Friends</h2>
           <p>Lorem ipsum sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <
         </div>
       </div>
       {/* game card */}

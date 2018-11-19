@@ -20,14 +20,13 @@
     margin-top: 5%;
 }
 .cardBody {
-    width: 20%;
-    margin-right: 15%;
+    width: 30%;
+    padding: 15%;
 }
 /* all the individual cards */
 .dashboardCards {
     height: 100%;
     width: 20%;
-    margin-right: 15%;
 }
 /* individual card css */
 /* .profileCards {

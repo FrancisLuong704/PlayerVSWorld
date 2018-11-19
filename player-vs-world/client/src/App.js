@@ -9,6 +9,7 @@ import Main from "./components/pages/Main";
 import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
 import './App.css';
+import inbox from './components/pages/Inbox';
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route exact path="/Survey" component={Survey} />
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/Main" component={Main} />
+          <Route exact path="/Inbox" component={inbox} />
           <Route exact path="/Link" component={Link} />
           <Route exact path="/MakeLink" component={MakeLink} />
         </div>

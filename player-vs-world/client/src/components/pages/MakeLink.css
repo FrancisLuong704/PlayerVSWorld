@@ -1,0 +1,22 @@
+/* pvw title css */
+.cardContent{
+    background: #303663;    
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    border-radius: 26px;
+    color: white;
+
+}
+.pvw {
+    margin-left: 2.5%;
+    color: white;
+}
+.heading {
+    margin-left: 2.5%;
+    color: white;
+}
+
+/* newLink css */
+.newLink {
+    margin-left: 2.5%;
+}

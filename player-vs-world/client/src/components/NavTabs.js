@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./NavTabs.css";
 
 const NavTabs = () => (
-    <nav className="uk-navbar-container uk-navbar">
+    <nav className="main-nav uk-navbar-container uk-navbar uk-navbar-transparent">
     {/* left side of navbar */}
         <div className="uk-navbar-left">
             {/* Our website Logo goes here */}
@@ -10,8 +11,8 @@ const NavTabs = () => (
             {/* Search Bar is here */}
             <div className="uk-navbar-item">
                 <form>
-                    <input className="uk-input uk-form-width-large" type="text" placeholder="Search Games/Forums/Profiles" />
-                    <button className="uk-button uk-button-default">Search</button>
+                    <input className="uk-input uk-form-width-large" type="text" placeholder="Search Games/Forums/Dashboards" />
+                    <button className="uk-button uk-button-default "><label className="search-text">Search</label></button>
                 </form>
             </div>
         </div>
@@ -40,15 +41,26 @@ const NavTabs = () => (
                         new Forum
                     </Link>
                 </li>
-                {/* Visit your profile */}
+                {/* Visit your Dashboard */}
                 <li>
                     <Link
-                        to="/Profile"
+                        to="/Dashboard"
                         className={
-                            window.location.pathname === "/Profile" ? "nav-link active" : "nav-link"
+                            window.location.pathname === "/Dashboard" ? "nav-link active" : "nav-link"
                         }
                     >
-                        Profile
+                        Dashboard
+                    </Link>
+                </li>
+                 {/* Visit your inbox */}
+                 <li>
+                    <Link
+                        to="/Inbox"
+                        className={
+                            window.location.pathname === "/Inbox" ? "nav-link active" : "nav-link"
+                        }
+                    >
+                        Inbox
                     </Link>
                 </li>
                 {/* Sign Out and Head back to Login page */}

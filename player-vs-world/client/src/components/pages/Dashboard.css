@@ -1,0 +1,35 @@
+/* container background*/
+.page-container {
+    height: cover;
+    width: cover;
+}
+
+/* pvw title text */
+.pvw {
+    font-size: 450%;
+    color: white;
+}
+
+/* profile text */
+.prof {
+    color: white;
+}
+
+/* card containers */
+.cardRows {
+    /* this is making the cards side by side */
+    display:flex;
+     flex-direction:row;
+}
+/* cards */
+.dashboardCards {
+    background: #303663;
+    color: white;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    border-radius: 26px;
+}
+/* card title text */
+.cardTitle {
+    color: white;
+}

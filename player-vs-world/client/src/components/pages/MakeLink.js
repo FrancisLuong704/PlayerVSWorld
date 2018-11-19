@@ -10,6 +10,8 @@ const MakeLink = () => (
             <div className="uk-card uk-card-default">
                 <div className="uk-card-body">
                 <form>
+                    Title:
+                    <input className="uk-input uk-margin-small"></input>
                     Related Game:
                     <select className="uk-select uk-margin-small ">
                         <option>Game</option>

@@ -4,16 +4,15 @@
     width: cover;
 }
 
-/* pvw title css */
+/* pvw title text */
 .pvw {
-    margin-left: 2.5%;
     font-size: 450%;
-    margin-left: 3.75%;
+    color: white;
 }
 
-/* prof css */
+/* profile text */
 .prof {
-    margin-left: 3.75%;
+    color: white;
 }
 
 /* card containers */
@@ -21,4 +20,13 @@
     /* this is making the cards side by side */
     display:flex;
      flex-direction:row;
+}
+/* cards */
+.dashboardCards {
+    background: #303663;
+    color: white;
+}
+/* card title text */
+.cardTitle {
+    color: white;
 }

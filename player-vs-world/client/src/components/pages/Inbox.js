@@ -3,7 +3,7 @@ import "./Inbox.css";
 const Inbox  = () => (
 <div>
     <div className="uk-container">
-    <div class="uk-card inbox-card" uk-card-default>
+    <div class="uk-card inbox-card">
         <div class="uk-card-header">
             <h3 class="uk-card-title inbox-title">Inbox</h3>
         </div>

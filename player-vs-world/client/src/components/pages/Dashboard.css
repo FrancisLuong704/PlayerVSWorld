@@ -3,32 +3,22 @@
     height: cover;
     width: cover;
 }
+
 /* pvw title css */
 .pvw {
     margin-left: 2.5%;
     font-size: 450%;
+    margin-left: 3.75%;
 }
+
 /* prof css */
 .prof {
-    margin-left: 2.5%;
+    margin-left: 3.75%;
 }
+
 /* card containers */
 .cardRows {
     /* this is making the cards side by side */
     display:flex;
      flex-direction:row;
-    margin-top: 5%;
 }
-.cardBody {
-    width: 30%;
-    padding: 15%;
-}
-/* all the individual cards */
-.dashboardCards {
-    height: 100%;
-    width: 20%;
-}
-/* individual card css */
-/* .profileCards {
-    background: #363f6d;
-} */

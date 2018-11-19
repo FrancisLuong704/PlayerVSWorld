@@ -1,0 +1,30 @@
+/* container background*/
+.page-container {
+    height: cover;
+    width: cover;
+}
+/* pvw title css */
+.pvw {
+    margin-left: 2.5%;
+    font-size: 450%;
+}
+/* prof css */
+.prof {
+    margin-left: 2.5%;
+}
+/* card containers */
+.cardRows {
+    /* this is making the cards side by side */
+    display:flex;
+     flex-direction:row;
+    margin-top: 5%;
+}
+/* all the individual cards */
+.uk-card-transparent {
+    width: 90%;
+    height: 200%;
+}
+/* individual card css */
+/* .profileCards {
+    background: #363f6d;
+} */

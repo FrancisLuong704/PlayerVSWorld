@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavTabs from "./components/NavTabs";
-import Profile from "./components/pages/Profile";
+import Dashboard from "./components/pages/Dashboard";
 import Login from "./components/pages/Login";
 import Survey from "./components/pages/Survey";
 import SignUp from "./components/pages/SignUp";
@@ -19,7 +19,7 @@ class App extends Component {
       <Router>
         <div>
           <NavTabs />
-          <Route exact path="/Profile" component={Profile} />
+          <Route exact path="/Dashboard" component={Dashboard} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Survey" component={Survey} />
           <Route exact path="/SignUp" component={SignUp} />

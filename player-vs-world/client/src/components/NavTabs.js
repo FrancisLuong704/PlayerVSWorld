@@ -11,7 +11,7 @@ const NavTabs = () => (
             {/* Search Bar is here */}
             <div className="uk-navbar-item">
                 <form>
-                    <input className="uk-input uk-form-width-large" type="text" placeholder="Search Games/Forums/Profiles" />
+                    <input className="uk-input uk-form-width-large" type="text" placeholder="Search Games/Forums/Dashboards" />
                     <button className="uk-button uk-button-default">Search</button>
                 </form>
             </div>
@@ -41,15 +41,15 @@ const NavTabs = () => (
                         new Forum
                     </Link>
                 </li>
-                {/* Visit your profile */}
+                {/* Visit your Dashboard */}
                 <li>
                     <Link
-                        to="/Profile"
+                        to="/Dashboard"
                         className={
-                            window.location.pathname === "/Profile" ? "nav-link active" : "nav-link"
+                            window.location.pathname === "/Dashboard" ? "nav-link active" : "nav-link"
                         }
                     >
-                        Profile
+                        Dashboard
                     </Link>
                 </li>
                  {/* Visit your inbox */}

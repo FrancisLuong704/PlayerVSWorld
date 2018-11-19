@@ -12,7 +12,7 @@ const NavTabs = () => (
             <div className="uk-navbar-item">
                 <form>
                     <input className="uk-input uk-form-width-large" type="text" placeholder="Search Games/Forums/Dashboards" />
-                    <button className="uk-button uk-button-default">Search</button>
+                    <button className="uk-button uk-button-default "><label className="search-text">Search</label></button>
                 </form>
             </div>
         </div>

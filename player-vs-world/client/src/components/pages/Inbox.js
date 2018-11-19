@@ -5,10 +5,9 @@ const Inbox  = () => (
     <div className="uk-container">
     <div class="uk-card inbox-card" uk-card-default>
         <div class="uk-card-header">
-            <h3 class="uk-card-title">Inbox</h3>
+            <h3 class="uk-card-title inbox-title">Inbox</h3>
         </div>
         <div class="uk-card-body"></div>
-        <div class="uk-card-footer"></div>
     </div>
     </div>
 </div>

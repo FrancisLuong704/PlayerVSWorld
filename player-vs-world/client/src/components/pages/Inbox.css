@@ -1,4 +1,12 @@
-.inbox-card{
-    background: black;
-    padding: 300px 400px;
+.inbox-card {
+    background: #303663;
+    margin-top: 200px;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    border-radius: 26px;
+
+}
+
+.inbox-title {
+    color: white;
 }

@@ -7,4 +7,9 @@ html {
     background-size: cover;
     height: 100%;
     width: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3, h4, a, p {
+    font-family: 'Raleway', sans-serif;
 }

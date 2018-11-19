@@ -1,23 +1,23 @@
 import React from "react";
-
+import "./Login.css"
 const Login = () => (
     <div className="uk-container uk-text-center@s">
     {/* Title */}
-        <h1 className="uk-heading-primary uk-padding-large">Player VS World</h1>
+        <h1 className="uk-heading-primary uk-padding-large loginTitle">Player VS World</h1>
         {/* form start */}
         <form>
             {/* Email Input */}
             <div className="uk-margin">
                 <div className="uk-inline">
-                    <span className="uk-form-icon" uk-icon="icon: user"></span>
-                    <input className="uk-input" type="email" placeholder="Email"/>
+                    <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: user"></span>
+                    <input className="uk-input" type="email"  placeholder="Email"></input>
                 </div>
             </div>
             {/* Password Input */}
             <div className="uk-margin">
                 <div className="uk-inline">
                     <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-                    <input className="uk-input" type="text" placeholder="Password"/>
+                    <input className="uk-input" type="text" placeholder="Password"></input>
                 </div>
             </div>
             {/* Login Button (type=submit) */}

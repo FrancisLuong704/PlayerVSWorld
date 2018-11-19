@@ -10,4 +10,4 @@ const friendCard  = () => (
 </div>
 );
 
-export default friendCard;
+export default FriendCard;

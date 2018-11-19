@@ -13,9 +13,5 @@ $(document).ready(function() {
               });
         })
     };
-    $(document).on("click", ".clickable", function() {
-        const id =$(this).attr("value")
-        alert(id)
-      });
     
 })

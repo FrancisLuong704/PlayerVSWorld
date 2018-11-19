@@ -25,6 +25,9 @@
 .dashboardCards {
     background: #303663;
     color: white;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    border-radius: 26px;
 }
 /* card title text */
 .cardTitle {

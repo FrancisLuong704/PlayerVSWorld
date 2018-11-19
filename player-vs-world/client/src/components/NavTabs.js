@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./NavTabs.css";
 
 const NavTabs = () => (
-    <nav className="uk-navbar-container uk-navbar">
+    <nav className="main-nav uk-navbar-container uk-navbar uk-navbar-transparent">
     {/* left side of navbar */}
         <div className="uk-navbar-left">
             {/* Our website Logo goes here */}
@@ -49,6 +50,17 @@ const NavTabs = () => (
                         }
                     >
                         Profile
+                    </Link>
+                </li>
+                 {/* Visit your inbox */}
+                 <li>
+                    <Link
+                        to="/Inbox"
+                        className={
+                            window.location.pathname === "/Inbox" ? "nav-link active" : "nav-link"
+                        }
+                    >
+                        Inbox
                     </Link>
                 </li>
                 {/* Sign Out and Head back to Login page */}

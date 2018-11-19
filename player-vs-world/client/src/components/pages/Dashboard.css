@@ -19,10 +19,15 @@
      flex-direction:row;
     margin-top: 5%;
 }
+.cardBody {
+    width: 20%;
+    margin-right: 15%;
+}
 /* all the individual cards */
-.uk-card-transparent {
-    width: 90%;
-    height: 200%;
+.dashboardCards {
+    height: 100%;
+    width: 20%;
+    margin-right: 15%;
 }
 /* individual card css */
 /* .profileCards {

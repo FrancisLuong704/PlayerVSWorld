@@ -9,5 +9,29 @@
 }
 
 .inbox-title {
-    color: white;
+    
+    border: 1px black solid;
+  border-radius: 4px;
+}
+.sender{
+    width: 15%;
+    border: 1px black solid;
+  border-radius: 4px;
+}
+.message{
+    width: 80%;
+    border: 1px black solid;
+  border-radius: 4px;
+}
+.delete{
+   
+    border: 1px black solid;
+  border-radius: 4px;
+}
+.messageDump{
+    background-color: white;
+  border-radius: 4px;
+    width: 100%;
+    border: 1px black solid;
+  border-radius: 4px;
 }

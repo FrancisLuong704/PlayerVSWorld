@@ -143,6 +143,7 @@ module.exports = function (app) {
         res.json(dbPost);
       });
   })
+
   app.post("/api/users/friendFind", function (req, res) {
     db.Friend.findAll({
       where: {
@@ -157,6 +158,55 @@ module.exports = function (app) {
         res.json(dbPost);
       });
   })
+
+  app.post("/api/users/groupAdd", function (req, res) {
+    console.log(req.body);
+    db.Profile.create({
+      user: req.body.user,
+      groups: req.body.groups
+    })
+      .then(function (dbGroup) {
+        res.json(dbGroup);
+      });
+  })
+
+  app.post("/api/users/groupFind", function (req, res) {
+    db.Profile.findAll({
+      where: {
+        user: req.body.user,
+      },
+      attributes: ['groups'],
+    })
+      .then(function (dbGroup) {
+        console.log(dbGroup)
+        res.json(dbGroup);
+      });
+  })
+
+  app.post("/api/users/gamesAdd", function (req, res) {
+    console.log(req.body);
+    db.Profile.create({
+      user: req.body.user,
+      games: req.body.games
+    })
+      .then(function (dbGames) {
+        res.json(dbGames);
+      });
+  })
+
+  app.post("/api/users/gamesFind", function (req, res) {
+    db.Profile.findAll({
+      where: {
+        user: req.body.user,
+      },
+      attributes: ['games'],
+    })
+      .then(function (dbGames) {
+        console.log(dbGames)
+        res.json(dbGames);
+      });
+  })
+
   app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/inbox.html"));
   });

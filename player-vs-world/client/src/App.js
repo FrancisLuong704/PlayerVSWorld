@@ -10,10 +10,9 @@ import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
 import Inbox from "./components/pages/Inbox";
 import Message from "./components/pages/message";
+import inbox from './components/pages/Inbox';
 import './uikit/uikit.css';
 import './App.css';
-import inbox from './components/pages/Inbox';
-
 
 class App extends Component {
   render() {

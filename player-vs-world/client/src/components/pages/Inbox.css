@@ -4,6 +4,7 @@
     -webkit-border-radius: 26px;
     -moz-border-radius: 26px;
     border-radius: 26px;
+    
    
 
 }
@@ -34,4 +35,7 @@
     width: 100%;
     border: 1px black solid;
   border-radius: 4px;
+}
+.color-white {
+  color: white;
 }

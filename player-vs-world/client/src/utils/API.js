@@ -22,7 +22,7 @@ export default {
   },
   //sent mail
   mailSender: function(messages) {
-    return axios.put("/api/mail/senderMessage", messages);
+    return axios.put("/api/mail/sender", messages);
   },
   friendAdd: function(friend) {
     return axios.post("/api/users/friendAdd", friend);

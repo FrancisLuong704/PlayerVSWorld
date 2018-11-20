@@ -13,6 +13,7 @@ import Message from "./components/pages/message";
 import './uikit/uikit.css';
 import './App.css';
 import inbox from './components/pages/Inbox';
+import Mail from "./components/pages/Mail.js";
 
 
 class App extends Component {
@@ -26,10 +27,9 @@ class App extends Component {
           <Route exact path="/Survey" component={Survey} />
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/Main" component={Main} />
-          <Route exact path="/Inbox" component={inbox} />
           <Route exact path="/Link" component={Link} />
           <Route exact path="/MakeLink" component={MakeLink} />
-          <Route exact path="/Inbox" component={Inbox} />
+          <Route path="/Mail" component={Mail} />
           <Route exact path="/Message" component={Message} />
         </div>
       </Router>

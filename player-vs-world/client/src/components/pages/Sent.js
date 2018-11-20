@@ -3,10 +3,11 @@ import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import DeleteBtn from "../../components/DeleteBtn";
 import { Link } from "react-router-dom";
-import "./Inbox.css"
-const data = { "receiver": "max" }
+import "./Inbox.css";
+const data = { "receiver": "max" };
 
-class Inbox extends Component {
+
+class Sent extends Component {
     state = {
         Messages: [],
         title: "",
@@ -19,7 +20,7 @@ class Inbox extends Component {
     }
     getLatest = () => {
         console.log()
-        API.getMessages(data)
+        API.mailSender(data)
             .then(res =>
                 this.setState({ Messages: res.data, id:"", title: "", sender: ""})
             )
@@ -27,7 +28,7 @@ class Inbox extends Component {
     };
     deleteMessage = id => {
         console.log("made it", )
-        API.deleteReciever({"id":id, "receiver":data.receiver})
+        API.senderDelete({"id":id, "sender":data.sender})
       .then(res => this.getLatest())
       .catch(err => console.log(err));
     };
@@ -51,11 +52,11 @@ class Inbox extends Component {
                     </tbody>
                     </table>
                     ) : (
-                            <h3 class="color-white">You haven't recieved any new messages... </h3>
+                            <h3 class="color-white">You haven't sent any messages... </h3>
                         )}
             </Container>
         )
     }
 }
 
-export default Inbox;
+export default Sent;

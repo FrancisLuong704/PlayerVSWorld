@@ -16,7 +16,7 @@ const MakeLink = () => (
                     <select className="uk-select uk-margin-small ">
                         <option>Game</option>
                     </select>
-                    <textarea className="uk-textarea uk-margin-small">Type Content Here</textarea>
+                    <textarea className="uk-textarea uk-margin-small" rows="4" cols="50" placeholder="Type content here"></textarea>
                     <button className="uk-button-secondary uk-margin-small" type="button">SUBMIT</button>               
                 </form>
                 </div>

@@ -9,6 +9,7 @@ import Main from "./components/pages/Main";
 import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
 import Inbox from "./components/pages/Inbox";
+import Message from "./components/pages/message";
 import './uikit/uikit.css';
 import './App.css';
 import inbox from './components/pages/Inbox';
@@ -29,6 +30,7 @@ class App extends Component {
           <Route exact path="/Link" component={Link} />
           <Route exact path="/MakeLink" component={MakeLink} />
           <Route exact path="/Inbox" component={Inbox} />
+          <Route exact path="/Message" component={Message} />
         </div>
       </Router>
     )

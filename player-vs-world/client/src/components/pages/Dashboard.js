@@ -1,5 +1,5 @@
 import React from "react";
-import FriendCard from "../friendCard";
+//import FriendCard from "../friendCard";
 import "./Dashboard.css";
 
 const Dashboard = () => (

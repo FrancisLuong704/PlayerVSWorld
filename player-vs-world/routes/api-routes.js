@@ -14,6 +14,7 @@ var path = require("path");
 module.exports = function (app) {
   
   app.post("/api/mail/receiver", function (req, res) {
+    console.log(req.body)
     db.Mail.findAll({
       where: {
         receiver: req.body.receiver,
@@ -31,7 +32,7 @@ module.exports = function (app) {
 
   // Post route for a single message
   app.put("/api/mail/get", function (req, res) {
-    const rec = req.body.receiver
+    console.log("made it")
     const id = req.body.id
     db.Mail.update({
       readed: true
@@ -50,7 +51,7 @@ module.exports = function (app) {
         })
 
           .then(function (dbMessage) {
-            console.log(dbMessage)
+            
             res.json(dbMessage)
           })
       })

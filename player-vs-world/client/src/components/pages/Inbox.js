@@ -1,91 +1,61 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-const user = max
-class Books extends Component {
+import { Container } from "../../components/Grid";
+import DeleteBtn from "../../components/DeleteBtn";
+import { Link } from "react-router-dom";
+import "./Inbox.css"
+const data = { "receiver": "max" }
+
+class Inbox extends Component {
     state = {
-      Messages: [],
-      title: "",
-      sender: ""
+        Messages: [],
+        title: "",
+        sender: "",
+        id:"",
+      
     };
-  
     componentDidMount() {
-      this.loadBooks();
+        this.getLatest();
     }
-  
-    loadBooks = () => {
-      API.getBooks()
-        .then(res =>
-          this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-        )
-        .catch(err => console.log(err));
+    getLatest = () => {
+        console.log()
+        API.getMessages(data)
+            .then(res =>
+                this.setState({ Messages: res.data, id:"", title: "", sender: ""})
+            )
+            .catch(err => console.log(err));
     };
-  
- 
-  
- 
-  
-    
-  
+    deleteMessage = id => {
+        console.log("made it", )
+        API.deleteReciever({"id":id, "receiver":data.receiver})
+      .then(res => this.getLatest())
+      .catch(err => console.log(err));
+    };
     render() {
-      return (
-        <Container fluid>
-          <Row>
-            <Col size="md-6">
-              <Jumbotron>
-                <h1>What Books Should I Read?</h1>
-              </Jumbotron>
-              <form>
-                <Input
-                  value={this.state.title}
-                  onChange={this.handleInputChange}
-                  name="title"
-                  placeholder="Title (required)"
-                />
-                <Input
-                  value={this.state.author}
-                  onChange={this.handleInputChange}
-                  name="author"
-                  placeholder="Author (required)"
-                />
-                <TextArea
-                  value={this.state.synopsis}
-                  onChange={this.handleInputChange}
-                  name="synopsis"
-                  placeholder="Synopsis (Optional)"
-                />
-                <FormBtn
-                  disabled={!(this.state.author && this.state.title)}
-                  onClick={this.handleFormSubmit}
-                >
-                  Submit Book
-                </FormBtn>
-              </form>
-            </Col>
-            <Col size="md-6 sm-12">
-              <Jumbotron>
-                <h1>Books On My List</h1>
-              </Jumbotron>
-              {this.state.books.length ? (
-                <List>
-                  {this.state.books.map(book => (
-                    <ListItem key={book._id}>
-                      <Link to={"/books/" + book._id}>
-                        <strong>
-                          {book.title} by {book.author}
-                        </strong>
-                      </Link>
-                      <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                    </ListItem>
-                  ))}
-                </List>
-              ) : (
-                <h3>No Results to Display</h3>
-              )}
-            </Col>
-          </Row>
-        </Container>
-      );
+        return (
+            <Container fluid>
+                    {this.state.Messages.length ? (
+                        <table className="messageDump table-hover" id="clickIt">
+                        <tbody>
+                        {this.state.Messages.map(message => (
+                            
+                            <tr key={message.id} className="clickThis">
+                                <td className="sender">{message.sender} </td>
+                                    <td className="message" value = {message.id} ><Link to={{ pathname: "/message", state: {passed: (this, message.id)}}}>
+                                        {message.title}</Link></td>
+                                    <td className="delete"><center><button className="btn btn-danger" onClick={this.deleteMessage.bind(this, message.id)}>X</button></center></td>
+                            </tr>
+                            
+                            ))
+                        }
+                    </tbody>
+                    </table>
+                    ) : (
+                            <h3>No Results to Display</h3>
+                        )}
+            </Container>
+        )
     }
-  }
-  
-  export default Books;
+}
+
+export default Inbox;

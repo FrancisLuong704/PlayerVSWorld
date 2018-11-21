@@ -10,10 +10,8 @@ import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
 import Inbox from "./components/pages/Inbox";
 import Message from "./components/pages/message";
-import inbox from './components/pages/Inbox';
 import './uikit/uikit.css';
 import './App.css';
-import inbox from './components/pages/Inbox';
 import Mail from "./components/pages/Mail.js";
 
 
@@ -32,6 +30,7 @@ class App extends Component {
           <Route exact path="/MakeLink" component={MakeLink} />
           <Route path="/Mail" component={Mail} />
           <Route exact path="/Message" component={Message} />
+          <Route exact path="/Inbox" component={Inbox} />
         </div>
       </Router>
     )

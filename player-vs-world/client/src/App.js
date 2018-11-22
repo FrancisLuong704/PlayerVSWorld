@@ -33,6 +33,7 @@ class App extends Component {
           <Route exact path="/Message" component={Message} />
           <Route exact path="/Send" component={Send} />
           <Route path="/Mail" component={Mail} />
+          <Route path="/Inbox" component={inbox} />
          
         </div>
       </Router>

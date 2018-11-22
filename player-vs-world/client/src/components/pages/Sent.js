@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Container } from "../../components/Grid";
-import DeleteBtn from "../../components/DeleteBtn";
+
 import { Link } from "react-router-dom";
 import "./Inbox.css";
 const data = { "receiver": "max" };

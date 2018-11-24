@@ -6,9 +6,11 @@
 // =============================================================
 
 // Requiring our Todo model
-var db = require("../models");
+const db = require("../models");
 const express = require("express");
-var path = require("path");
+const path = require("path");
+const jwt = require('jsonwebtoken')
+const passport = require("../utils/passport")
 // Routes
 // =============================================================
 module.exports = function (app) {
@@ -161,4 +163,34 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/inbox.html"));
   });
 
+  app.post("/login", (req, res)=> {
+    const {email, password } =req.body
+    db.User.findOne({
+      where: {
+      email
+    }
+    })
+    .then(user => {
+  
+      if (!user) {
+        return res.status(401).json({success: false, msg: "Authentication failed."})
+      }
+      
+      if (password === user.password){
+        console.log(process.env.SECRET)
+        const token = jwt.sign(user.toJSON(),  process.env.SECRET);
+          res.json({success: true, token: 'JWT ' + token})
+      }
+      else {
+        res.status(401).send({success: false, msg: "Authentication failed. Wrong password"})
+       }
+    })
+    .catch(err => console.log(err))
+  })
+  app.get("/api/test", passport.authenticate('jwt',{session:false}),( req,res)=>{
+    res.send("It's working!!")
+  })
+  app.get("/api/message", passport.authenticate('jwt', { session: false }), (req, res) => {
+    res.json({ message: "Hello world" });
+  })
 };

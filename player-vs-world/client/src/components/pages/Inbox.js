@@ -14,12 +14,12 @@ class Inbox extends Component {
       
     };
     componentDidMount() {
-        console.log(this.state.token)
+        console.log(this.props.token)
         this.getLatest();
     }
     getLatest = () => {
         
-        API.getMessages(data)
+        API.getMessages(data, this.props.token)
             .then(res =>
                 this.setState({ Messages: res.data, id:"", title: "", sender: ""})
             )

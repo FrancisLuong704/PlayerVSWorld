@@ -2,8 +2,9 @@ import axios from "axios";
 
 export default {
   // Gets all Messages
-  getMessages: function(userInfo) {
-    return axios.post("/api/mail/receiver", userInfo);
+  getMessages: function(userInfo, token) {
+    console.log(token)
+    return axios.post("/api/mail/receiver",userInfo,{ headers :{Authorization: `Bearer ${token}`}});
   },
   // Gets a single message by ID
   // getMessage: function(messageId) {

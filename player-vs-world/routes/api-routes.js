@@ -132,6 +132,7 @@ module.exports = function (app) {
         res.json(dbPost);
       });
   });
+
   //add friends to a specific user
   app.post("/api/users/friendAdd", function (req, res) {
     console.log(req.body);
@@ -143,6 +144,7 @@ module.exports = function (app) {
         res.json(dbPost);
       });
   });
+
   //find all friends of a certain user
   app.post("/api/users/friendFind", function (req, res) {
     db.Friend.findAll({
@@ -158,6 +160,7 @@ module.exports = function (app) {
         res.json(dbPost);
       });
   });
+
   // add new group to a specific user
   app.post("/api/users/groupAdd", function (req, res) {
     console.log(req.body);
@@ -169,6 +172,7 @@ module.exports = function (app) {
         res.json(dbGroup);
       });
   });
+
   //find all groups that user is associated with
   app.post("/api/users/groupFind", function (req, res) {
     db.Profile.findAll({
@@ -182,6 +186,7 @@ module.exports = function (app) {
         res.json(dbGroup);
       });
   });
+
   // add new games to user
   app.post("/api/users/gamesAdd", function (req, res) {
     console.log(req.body);
@@ -193,6 +198,7 @@ module.exports = function (app) {
         res.json(dbGames);
       });
   });
+
   // find all games with certain user
   app.post("/api/users/gamesFind", function (req, res) {
     db.Profile.findAll({
@@ -224,6 +230,21 @@ module.exports = function (app) {
     db.Blog.findAll({})
     .then(function (dbBlog) {
       res.json(dbBlog)
+    });
+  });
+
+  //create a user
+  app.post("/api/newUser", function (req, res) {
+    db.User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password,
+      Username: req.body.Username,
+    })
+    .then(function (dbUser) {
+      console.log(dbUser)
+      res.json(dbUser)
     });
   });
 

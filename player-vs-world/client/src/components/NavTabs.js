@@ -17,10 +17,15 @@ const NavTabs = props => (
                     </form>
                 </div>
             </div>
-            {/* switching over to the right side of navbar */}
+                       {/* switching over to the right side of navbar */}
             <div className="uk-navbar-right">
                 <ul className="uk-navbar-nav">
                     {/* main page link */}
+    
+                    <li className="nav-item">
+                        <Link to='/signup'>Sign Up</Link>
+                    </li>
+            
                     <li className="nav-item">
                         <Link to='/login'>Login</Link>
                     </li>
@@ -98,7 +103,7 @@ const NavTabs = props => (
                         </li>
                         {/* Sign Out and Head back to Login page */}
                         <li className="nav-item">
-                            <Link to>
+                        <Link to='/login'>
                                 <div onClick={() => Auth.logout()}>
                                     Sign Out
                     </div>

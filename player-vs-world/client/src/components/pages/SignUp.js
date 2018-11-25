@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Input, FormBtn } from "../../components/Form";
-
+import {Redirect} from 'react-router-dom'
 import "./SignUp.css";
 
 class SignUp extends Component {
@@ -12,6 +12,7 @@ class SignUp extends Component {
         Username: "",
         email: "",
         password: "",
+        redirect: false
     }
 
     // on input change
@@ -33,15 +34,26 @@ class SignUp extends Component {
                 email: this.state.email,
                 password: this.state.password
             })
-            .then(res => console.log(res))
+            .then(res => {
+               if (res.status===200){
+                this.setState({
+                    redirect: true
+                  })
+               }
+            })
             .catch(err => console.log(err));
         }
     };
-
+    renderRedirect = () => {
+        if (this.state.redirect) {
+          return <Redirect to='/login' />
+        }
+      }
     render() {
         return (
                 <div className="uk-container">
-                    <div className="uk-text-center">                    
+                    <div className="uk-text-center">   
+                    {this.renderRedirect()}                 
                         <div className="uk-card uk-card-body cardContent uk-width-1-1 uk-margin-medium-top">
                             <form>
                                 <Input
@@ -71,6 +83,7 @@ class SignUp extends Component {
                                 <Input
                                     value= {this.state.password}
                                     onChange= {this.handleInputChange}
+                                    type="password"
                                     name="password"
                                     placeholder="Password"
                                 />

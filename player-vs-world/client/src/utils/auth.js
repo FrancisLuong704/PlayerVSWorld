@@ -1,8 +1,9 @@
 
 class Auth {
 	static onAuthChangeCallback = null
-	static login (token) {
+	static login (token, user) {
 		localStorage.setItem('token', token)
+		localStorage.setItem('user', user)
 		Auth.onAuthChangeCallback(token)
 	}
 	static logout() {
@@ -13,7 +14,9 @@ class Auth {
 	static getToken() {
 		return localStorage.getItem('token')
 	}
-
+	static getUser() {
+		return localStorage.getItem('user')
+	}
 	static isAuthenticated() {
 		return !!Auth.getToken()
 	}

@@ -9,8 +9,8 @@ import Main from "./components/pages/Main";
 import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
 import inbox from "./components/pages/Inbox";
-import DashboardPage from './components/pages/DashboardPage';
 
+import API from "./utils/API";
 import Inbox from './components/pages/Inbox'
 import Auth from './utils/auth';
 import Forum from "./components/pages/Forum";
@@ -21,20 +21,38 @@ import Mail from "./components/pages/Mail.js";
 
 class App extends Component {
   state = {
-    token: Auth.getToken()
+    token: Auth.getToken(),
+    person: ""
   }
 
   componentDidMount() {
     Auth.onAuthChange(this.handleAuthChange)
     console.log("test", this.state.token)
+    
   }
-
+  
   handleAuthChange = token => {
     this.setState({
       token
     })
   }
+  getMe = () =>{
+    API.whoAmI(this.props.token)
+    .then(res =>{
+        
+        this.setState({
+            person: res.data
+          })
+        alert(this.state.person)
+    })
+    .catch(err => console.log(err));
+}
   render() {
+    if (this.props.token)
+    {
+      
+        this.getMe()
+    }
     return (
       <Router>
         <div>
@@ -53,11 +71,9 @@ class App extends Component {
           <Route exact path="/Forum" component={Forum} />
           <Route exact path="/Link" component={Link} />
           <Route exact path="/MakeLink" component={MakeLink} />
-          <PrivateRoute path="/Mail"
-            render = {(routeProps) => (<Mail {...routeProps} token = {this.state.token}/>)}
-            />
+          <PrivateRoute path="/Mail"component={Mail} token={this.state.token}/>
           <Route path="/Inbox" component={inbox} />
-          <PrivateRoute path="/dashboard" component={DashboardPage} token={this.state.token} />
+         
         </div>
       </Router>
     )

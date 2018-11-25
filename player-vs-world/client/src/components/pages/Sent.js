@@ -4,25 +4,30 @@ import { Container } from "../../components/Grid";
 
 import { Link } from "react-router-dom";
 import "./Inbox.css";
-const data = { "receiver": "max" };
+let user =""
+const data = { "receiver": user };
 
 
 class Sent extends Component {
     state = {
         Messages: [],
         title: "",
-        sender: "",
+        receiver: "",
         id:"",
       
     };
     componentDidMount() {
+        user = this.props.user
         this.getLatest();
+
+        console.log(user)
     }
     getLatest = () => {
         console.log()
-        API.mailSender(data)
+        API.mailSender({'sender': this.props.user})
             .then(res =>
-                this.setState({ Messages: res.data, id:"", title: "", sender: ""})
+                    console.log(res)
+               // this.setState({ Messages: res.data, id:"", title: "", receiver: ""})
             )
             .catch(err => console.log(err));
     };
@@ -41,8 +46,8 @@ class Sent extends Component {
                         {this.state.Messages.map(message => (
                             
                             <tr key={message.id} className="clickThis">
-                                <td className="sender">{message.sender} </td>
-                                    <td className="message" value = {message.id} ><Link to={{ pathname: "/message", state: {passed: (this, message.id)}}}>
+                                <td className="sender">{message.receiver} </td>
+                                    <td className="message" value = {message.id} ><Link to={{ pathname: "/Mail/Message", state: {passed: (this, message.id), user:(this.props.user)}}}>
                                         {message.title}</Link></td>
                                     <td className="delete"><center><button className="uk-button uk-button-danger" onClick={this.deleteMessage.bind(this, message.id)}>X</button></center></td>
                             </tr>

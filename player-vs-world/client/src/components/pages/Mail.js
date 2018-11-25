@@ -2,6 +2,8 @@ import React from "react";
 import "./Mail.css"
 import Inbox from './Inbox';
 import Sent from './Sent';
+import Send from './Send';
+import Message from './message'
 import { Route, Link } from "react-router-dom";
 import Auth from '../../utils/auth';
 console.log(Auth.getToken())
@@ -24,9 +26,13 @@ const Mail = () => (
             <div class="uk-card uk-card-body nav-bg card">
                 <h3 class="uk-card-title color-white">Messages</h3>
                 <Route exact path="/Mail/Inbox"
-                    render={(routeProps) => (<Inbox {...routeProps} token={Auth.getToken()} />)}
+                    render={(routeProps) => (<Inbox {...routeProps} token={Auth.getToken()} user={Auth.getUser()} />)}
                 />
-                <Route exact path="/Mail/Sent" component={Sent} />
+                <Route exact path="/Mail/Sent"  
+                render={(routeProps) => (<Sent {...routeProps} token={Auth.getToken()} user={Auth.getUser()} />)}/>
+                <Route exact path="/Mail/Send" 
+                 render={(routeProps) => (<Send {...routeProps} user={Auth.getUser()} />)}/>
+                <Route exact path="/Mail/Message" component={Message} />
                 <Route exact path="/Mail/Trash" component={Inbox} />
             </div>
         </div>

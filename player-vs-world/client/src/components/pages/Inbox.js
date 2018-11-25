@@ -10,22 +10,21 @@ class Inbox extends Component {
         title: "",
         sender: "",
         id:"",
+        token:"",
+        person:""
     
     };
     componentDidMount() {
         console.log(this.props.token)
-        
-        this.getMe();
+        this.setState({
+            token: this.props.token,
+            person: this.props.user
+        })
+        this.getLatest();
        
     }
-    getMe = () =>{
-        API.whoAmI(this.props.token)
-        .then(res =>this.getLatest(res.data))
-        .catch(err => console.log(err));
-    }
     getLatest = user => {
-        
-        API.getMessages({receiver: user}, this.props.token)
+        API.getMessages({receiver: this.props.user}, this.props.token)
             .then(res =>
                 this.setState({ Messages: res.data, id:"", title: "", sender: ""}),
                
@@ -34,7 +33,7 @@ class Inbox extends Component {
         }
     deleteMessage = id => {
         console.log("made it", )
-        API.deleteReciever({"id":id, "receiver":"max"})
+        API.deleteReciever({"id":id, "receiver":this.state.person})
       .then(res => this.getLatest())
       .catch(err => console.log(err));
     };
@@ -47,8 +46,8 @@ class Inbox extends Component {
                         {this.state.Messages.map(message => (
                             
                             <tr key={message.id} className="clickThis">
-                                <td className="sender"><Link to={{ pathname: "/send", state: {passed: (this, message.sender)}}}>{message.sender}</Link> </td>
-                                    <td className="message" value = {message.id} ><Link to={{ pathname: "/message", state: {passed: (this, message.id)}}}>
+                                <td className="sender"><Link to={{ pathname: "/Mail/Send", state: {passed: (this, message.sender)}}}>{message.sender}</Link> </td>
+                                    <td className="message" value = {message.id} ><Link to={{ pathname: "/Mail/Message", state: {passed: (this, message.id), user:(this.props.user)}}}>
                                         {message.title}</Link></td>
                                     <td className="delete"><center><button className="uk-button uk-button-danger" onClick={this.deleteMessage.bind(this, message.id)}>X</button></center></td>
                             </tr>

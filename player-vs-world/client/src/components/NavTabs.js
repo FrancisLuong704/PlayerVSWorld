@@ -33,12 +33,12 @@ const NavTabs = () => (
                 {/* Link to make a new page in forum */}
                 <li className="nav-item">
                     <Link
-                        to="/MakeLink"
+                        to="/Forum"
                         className={
-                            window.location.pathname === "/MakeLink" ? "nav-link active" : "nav-link"
+                            window.location.pathname === "/Forum" ? "nav-link active" : "nav-link"
                         }
                     >
-                        new Forum
+                        Forums
                     </Link>
                 </li>
                 {/* Visit your Dashboard */}
@@ -55,7 +55,7 @@ const NavTabs = () => (
                  {/* Visit your inbox */}
                  <li>
                     <Link
-                        to="/Inbox"
+                        to="/Mail"
                         className={
                             window.location.pathname === "/Mail" ? "nav-link active" : "nav-link"
                         }

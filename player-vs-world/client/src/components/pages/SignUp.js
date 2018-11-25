@@ -40,50 +40,50 @@ class SignUp extends Component {
 
     render() {
         return (
-            <Container>
-                <Row>
-                    <Col size="md-8">
-                        <form>
-                            <Input
-                                value= {this.state.firstName}
-                                onChange= {this.handleInputChange}
-                                name="firstName"
-                                placeholder="First Name"
-                            />
-                            <Input
-                                value= {this.state.lastName}
-                                onChange= {this.handleInputChange}
-                                name="lastName"
-                                placeholder="Last Name"
-                            />
-                            <Input
-                                value= {this.state.Username}
-                                onChange= {this.handleInputChange}
-                                name="Username"
-                                placeholder="UserName"
-                            />
-                            <Input
-                                value= {this.state.email}
-                                onChange= {this.handleInputChange}
-                                name="email"
-                                placeholder="email"
-                            />
-                            <Input
-                                value= {this.state.password}
-                                onChange= {this.handleInputChange}
-                                name="password"
-                                placeholder="Password"
-                            />
-                            <FormBtn
-                                disabled={!(this.state.firstName || !this.state.lastName || !this.state.email || !this.state.Username || !this.state.password )}
-                                onClick={this.handleFormSubmit}
-                            >
-                                Sign Up!
-                            </FormBtn>
-                        </form>
-                    </Col>
-                </Row>
-            </Container>
+                <div className="uk-container">
+                    <div className="uk-text-center">                    
+                        <div className="uk-card uk-card-body cardContent uk-width-1-1 uk-margin-medium-top">
+                            <form>
+                                <Input
+                                    value= {this.state.firstName}
+                                    onChange= {this.handleInputChange}
+                                    name="firstName"
+                                    placeholder="First Name"
+                                />
+                                <Input
+                                    value= {this.state.lastName}
+                                    onChange= {this.handleInputChange}
+                                    name="lastName"
+                                    placeholder="Last Name"
+                                />
+                                <Input
+                                    value= {this.state.Username}
+                                    onChange= {this.handleInputChange}
+                                    name="Username"
+                                    placeholder="UserName"
+                                />
+                                <Input
+                                    value= {this.state.email}
+                                    onChange= {this.handleInputChange}
+                                    name="email"
+                                    placeholder="email"
+                                />
+                                <Input
+                                    value= {this.state.password}
+                                    onChange= {this.handleInputChange}
+                                    name="password"
+                                    placeholder="Password"
+                                />
+                                <FormBtn
+                                    disabled={!(this.state.firstName || !this.state.lastName || !this.state.email || !this.state.Username || !this.state.password )}
+                                    onClick={this.handleFormSubmit}
+                                >
+                                    Sign Up!
+                                </FormBtn>
+                            </form>
+                        </div>
+                    </div>
+                </div>
         )
     }
 }

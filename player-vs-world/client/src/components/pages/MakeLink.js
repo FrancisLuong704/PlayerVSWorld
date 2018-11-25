@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Col, Row, Container } from "../../components/Grid";
+import { div, Row, Container } from "../../components/Grid";
 import "./MakeLink.css"
 
 class MakeLink extends Component {
@@ -38,11 +38,13 @@ class MakeLink extends Component {
 
     render() {
         return (
-            <Container>
-                <Row>
-                    <Col size="md-8">
-                        <h1>Add a Blog!</h1>
-                        <form>
+            <div className="uk-container">
+                <div className="uk-text-center">
+                
+                    <div className="uk-card uk-card-body cardContent uk-width-1-1 uk-margin-medium-top">
+                    <h1 className="text-white">Post a Thread!</h1>
+                        
+                        <form className="uk-form">
                             <Input
                                 value={this.state.title}
                                 onChange={this.handleInputChange}
@@ -53,9 +55,9 @@ class MakeLink extends Component {
                                 value={this.state.game}
                                 onChange={this.handleInputChange}
                                 name="game"
-                                placeholder="Game (required)"
+                                placeholder="Related Game (required)"
                             />
-                            <Input
+                            <TextArea
                                 value={this.state.content}
                                 onChange={this.handleInputChange}
                                 name="content"
@@ -68,9 +70,9 @@ class MakeLink extends Component {
                                 Submit Blog
                             </FormBtn>
                         </form>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
@@ -87,7 +89,7 @@ export default MakeLink;
 //                     <Input className="uk-Input uk-margin-small"></Input>
 //                     Game:
 //                     <Input className="uk-Input uk-margin-small"></Input>
-//                     <textarea className="uk-textarea uk-margin-small" rows="4" cols="50" placeholder="Type content here"></textarea>
+//                     <textarea className="uk-textarea uk-margin-small" rows="4" divs="50" placeholder="Type content here"></textarea>
 //                     <FormBtn className="uk-FormBtn-secondary uk-margin-small" type="FormBtn">SUBMIT</FormBtn>
 //                 </form>
 //             </div>

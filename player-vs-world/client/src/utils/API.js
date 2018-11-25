@@ -59,5 +59,11 @@ export default {
   },
   blogFind: function () {
     return axios.get("/api/blogs/getBlogs");
+  },
+  // <------------------------------------>
+  // make a user route
+  newUser: function (User) {
+    return axios.post("/api/newUser", User);
   }
+
 };

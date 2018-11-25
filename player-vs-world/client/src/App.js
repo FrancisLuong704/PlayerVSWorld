@@ -53,7 +53,8 @@ class App extends Component {
           <Route exact path="/Dashboard" component={Dashboard} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Survey" component={Survey} />
-          <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/SignUp"  render = {(routeProps) => (<SignUp {...routeProps} token = {this.state.token}/>)}
+            />
           <Route exact path="/Main" component={Main} />
           <Route exact path="/Inbox"
             render = {(routeProps) => (<Inbox {...routeProps} token = {this.state.token}/>)}

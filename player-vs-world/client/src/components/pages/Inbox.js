@@ -3,14 +3,14 @@ import API from "../../utils/API";
 import { Container } from "../../components/Grid";
 import { Link } from "react-router-dom";
 import "./Inbox.css"
-let user =""
+
 class Inbox extends Component {
     state = {
         Messages: [],
         title: "",
         sender: "",
         id:"",
-        user:""
+    
     };
     componentDidMount() {
         console.log(this.props.token)
@@ -20,12 +20,11 @@ class Inbox extends Component {
     }
     getMe = () =>{
         API.whoAmI(this.props.token)
-            .then(res => this.setState({user: res.data }))
-        .then(this.getLatest())
+        .then(res =>this.getLatest(res.data))
         .catch(err => console.log(err));
     }
-    getLatest = () => {
-        console.log(this.state)
+    getLatest = user => {
+        
         API.getMessages({receiver: user}, this.props.token)
             .then(res =>
                 this.setState({ Messages: res.data, id:"", title: "", sender: ""}),

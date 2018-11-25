@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Container } from "../../components/Grid";
-import DeleteBtn from "../../components/DeleteBtn";
 import { Link } from "react-router-dom";
 import "./Inbox.css"
 const data = { "receiver": "max" }
@@ -15,10 +14,11 @@ class Inbox extends Component {
       
     };
     componentDidMount() {
+        console.log(this.state.token)
         this.getLatest();
     }
     getLatest = () => {
-        console.log()
+        
         API.getMessages(data)
             .then(res =>
                 this.setState({ Messages: res.data, id:"", title: "", sender: ""})

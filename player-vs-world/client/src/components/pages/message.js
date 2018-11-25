@@ -6,7 +6,7 @@ import Jumbotron from "../../components/Jumbotron";
 let id = {}
 
 class Inbox extends Component {
-
+    
     state = {
         Messages: {}
     };
@@ -14,6 +14,7 @@ class Inbox extends Component {
         const messageId = this.props.location.state.passed
         id = { "id": messageId }
         this.getLatest()
+        
     }
     getLatest = () => {
         console.log(id)
@@ -29,6 +30,7 @@ class Inbox extends Component {
         return (
             <Container fluid>
                 <Jumbotron >
+                    
                     <div key={this.state.Messages.id}>
                         <h2>{this.state.Messages.title}</h2>
                         From: {this.state.Messages.sender}<br/>

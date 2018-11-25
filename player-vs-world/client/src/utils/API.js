@@ -6,9 +6,9 @@ export default {
     return axios.post("/api/mail/receiver", userInfo);
   },
   // Gets a single message by ID
-  getMessage: function(messageId) {
-    return axios.put("/api/mail/get", messageId);
-  },
+  // getMessage: function(messageId) {
+  //   return axios.put("/api/mail/get", messageId);
+  // },
   //sending a message
   sendMessage: function(message) {
     return axios.post("/api/mail/send", message);
@@ -29,6 +29,12 @@ export default {
   },
   friendfind: function(friend) {
     return axios.post("/api/users/friendFind", friend);
-  }
-  
+  },
+  getMessage: token => {
+    return fetch('/api/message', {
+        headers:{
+            "authorization": `Bearer ${token}`
+        }
+    } )
+}
 };

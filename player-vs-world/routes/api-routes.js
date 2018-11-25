@@ -15,7 +15,7 @@ const passport = require("../utils/passport")
 // =============================================================
 module.exports = function (app) {
   
-  app.post("/api/mail/receiver", function (req, res) {
+  app.post("/api/mail/receiver", passport.authenticate('jwt',{session:false}),( req,res) => {
     console.log(req.body)
     db.Mail.findAll({
       where: {

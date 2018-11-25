@@ -55,9 +55,9 @@ export default {
   // <------------------------------------>
   // blog routes
   blogAdd: function (blogs) {
-    return axios.post("/api/blogs/getBlogs", blogs);
+    return axios.post("/api/blogs/addBlogs", blogs);
   },
-  blogFind: function (blogs) {
-    return axios.post("/api/blogs/getBlogs", blogs);
+  blogFind: function () {
+    return axios.get("/api/blogs/getBlogs");
   }
 };

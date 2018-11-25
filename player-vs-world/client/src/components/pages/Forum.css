@@ -1,0 +1,17 @@
+.containingCard{
+    background: #303663;
+    color: white;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    border-radius: 26px;
+}
+.bg-grey{
+    background: #303663;
+    
+}
+.text-white {
+    color: white;
+}
+.button-bg{
+    background: white;
+}

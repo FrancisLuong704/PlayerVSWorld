@@ -60,44 +60,54 @@ const NavTabs = props => (
                             className={
                                 window.location.pathname === "/MakeLink" ? "nav-link active" : "nav-link"
                             }
-                        >
+                        />
                             new Forum
+                </li>
+                        {/* Link to make a new page in forum */}
+                        <li className="nav-item">
+                            <Link
+                                to="/Forum"
+                                className={
+                                    window.location.pathname === "/Forum" ? "nav-link active" : "nav-link"
+                                }
+                            >
+                                Forums
                     </Link>
-                    </li>
-                    {/* Visit your Dashboard */}
-                    <li>
-                        <Link
-                            to="/Dashboard"
-                            className={
-                                window.location.pathname === "/Dashboard" ? "nav-link active" : "nav-link"
-                            }
-                        >
-                            Dashboard
+                        </li>
+                        {/* Visit your Dashboard */}
+                        <li>
+                            <Link
+                                to="/Dashboard"
+                                className={
+                                    window.location.pathname === "/Dashboard" ? "nav-link active" : "nav-link"
+                                }
+                            >
+                                Dashboard
                     </Link>
-                    </li>
-                    {/* Visit your inbox */}
-                    <li>
-                        <Link
-                            to="/Inbox"
-                            className={
-                                window.location.pathname === "/Inbox" ? "nav-link active" : "nav-link"
-                            }
-                        >
-                            Inbox
+                        </li>
+                        {/* Visit your inbox */}
+                        <li>
+                            <Link
+                                to="/Mail"
+                                className={
+                                    window.location.pathname === "/Mail" ? "nav-link active" : "nav-link"
+                                }
+                            >
+                                Inbox
                     </Link>
-                    </li>
-                    {/* Sign Out and Head back to Login page */}
-                    <li className="nav-item">
-                    <Link to>
-                        <div onClick={() => Auth.logout()}>
-                            Sign Out
+                        </li>
+                        {/* Sign Out and Head back to Login page */}
+                        <li className="nav-item">
+                            <Link to>
+                                <div onClick={() => Auth.logout()}>
+                                    Sign Out
                     </div>
-                    </Link>
-                    </li>
+                            </Link>
+                        </li>
                 </ul>
             </div>
         </nav>
 
-);
-
-export default NavTabs;
+            );
+            
+            export default NavTabs;

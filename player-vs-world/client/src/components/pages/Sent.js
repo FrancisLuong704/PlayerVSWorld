@@ -1,41 +1,34 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Container } from "../../components/Grid";
+
 import { Link } from "react-router-dom";
-import "./Inbox.css"
-let user =""
-class Inbox extends Component {
+import "./Inbox.css";
+const data = { "receiver": "max" };
+
+
+class Sent extends Component {
     state = {
         Messages: [],
         title: "",
         sender: "",
         id:"",
-        user:""
+      
     };
     componentDidMount() {
-        console.log(this.props.token)
-        
-        this.getMe();
-       
-    }
-    getMe = () =>{
-        API.whoAmI(this.props.token)
-            .then(res => this.setState({user: res.data }))
-        .then(this.getLatest())
-        .catch(err => console.log(err));
+        this.getLatest();
     }
     getLatest = () => {
-        console.log(this.state)
-        API.getMessages({receiver: user}, this.props.token)
+        console.log()
+        API.mailSender(data)
             .then(res =>
-                this.setState({ Messages: res.data, id:"", title: "", sender: ""}),
-               
+                this.setState({ Messages: res.data, id:"", title: "", sender: ""})
             )
             .catch(err => console.log(err));
-        }
+    };
     deleteMessage = id => {
         console.log("made it", )
-        API.deleteReciever({"id":id, "receiver":"max"})
+        API.senderDelete({"id":id, "sender":data.sender})
       .then(res => this.getLatest())
       .catch(err => console.log(err));
     };
@@ -48,7 +41,7 @@ class Inbox extends Component {
                         {this.state.Messages.map(message => (
                             
                             <tr key={message.id} className="clickThis">
-                                <td className="sender"><Link to={{ pathname: "/send", state: {passed: (this, message.sender)}}}>{message.sender}</Link> </td>
+                                <td className="sender">{message.sender} </td>
                                     <td className="message" value = {message.id} ><Link to={{ pathname: "/message", state: {passed: (this, message.id)}}}>
                                         {message.title}</Link></td>
                                     <td className="delete"><center><button className="uk-button uk-button-danger" onClick={this.deleteMessage.bind(this, message.id)}>X</button></center></td>
@@ -59,11 +52,11 @@ class Inbox extends Component {
                     </tbody>
                     </table>
                     ) : (
-                            <h3 class="color-white">You haven't recieved any new messages... </h3>
+                            <h3 class="color-white">You haven't sent any messages... </h3>
                         )}
             </Container>
         )
     }
 }
 
-export default Inbox;
+export default Sent;

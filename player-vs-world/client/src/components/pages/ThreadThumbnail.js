@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import "./Main.css";
+// import "./ThreadList.css";
 
-class Main extends Component {
+class ThreadList extends Component {
     state = {
         blogs: []
     }
@@ -20,7 +20,6 @@ class Main extends Component {
     render() {
         return (
             <div className="uk-container-large">
-                <h1 className="uk-heading-primary uk-margin-medium-left mainPVW">Player VS World</h1>
                 <div className="uk-container uk-width-1-3">
                     {this.state.blogs.length ? (
                         <div>
@@ -45,6 +44,6 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default ThreadList;
 
 

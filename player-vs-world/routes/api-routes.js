@@ -14,7 +14,7 @@ const passport = require("../utils/passport")
 // Routes
 // =============================================================
 module.exports = function (app) {
-  
+ 
   app.post("/api/mail/receiver", passport.authenticate('jwt',{session:false}),( req,res) => {
     console.log(req.body)
     db.Mail.findAll({
@@ -135,6 +135,7 @@ module.exports = function (app) {
       });
   });
 
+  //add friends to a specific user
   app.post("/api/users/friendAdd", function (req, res) {
     console.log(req.body);
     db.Friend.create({
@@ -144,8 +145,11 @@ module.exports = function (app) {
       .then(function (dbPost) {
         res.json(dbPost);
       });
-  })
+  });
+
+  //find all friends of a certain user
   app.post("/api/users/friendFind", function (req, res) {
+    console.log("made it into friend find")
     db.Friend.findAll({
       where: {
         user: req.body.user,
@@ -158,7 +162,95 @@ module.exports = function (app) {
         console.log(dbPost)
         res.json(dbPost);
       });
-  })
+  });
+
+  // add new group to a specific user
+  app.post("/api/users/groupAdd", function (req, res) {
+    console.log(req.body);
+    db.Profile.create({
+      user: req.body.user,
+      groups: req.body.groups
+    })
+      .then(function (dbGroup) {
+        res.json(dbGroup);
+      });
+  });
+
+  //find all groups that user is associated with
+  app.post("/api/users/groupFind", function (req, res) {
+    db.Profile.findAll({
+      where: {
+        user: req.body.user,
+      },
+      attributes: ['groups'],
+    })
+      .then(function (dbGroup) {
+        console.log(dbGroup)
+        res.json(dbGroup);
+      });
+  });
+
+  // add new games to user
+  app.post("/api/users/gamesAdd", function (req, res) {
+    console.log(req.body);
+    db.Profile.create({
+      user: req.body.user,
+      games: req.body.games
+    })
+      .then(function (dbGames) {
+        res.json(dbGames);
+      });
+  });
+
+  // find all games with certain user
+  app.post("/api/users/gamesFind", function (req, res) {
+    db.Profile.findAll({
+      where: {
+        user: req.body.user,
+      },
+      attributes: ['games'],
+    })
+      .then(function (dbGames) {
+        console.log(dbGames)
+        res.json(dbGames);
+      });
+  });
+  
+  //post new blogs
+  app.post("/api/blogs/addBlogs", function (req, res) {
+    db.Blog.create({
+      title: req.body.title,
+      game: req.body.game,
+      content: req.body.content
+    })
+    .then(function (dbBlog) {
+      res.json(dbBlog)
+    });
+  });
+
+  //get all the blogs
+  app.get("/api/blogs/getBlogs", function (req, res) {
+    db.Blog.findAll({})
+    .then(function (dbBlog) {
+      res.json(dbBlog)
+    });
+  });
+
+  //create a user
+  app.post("/api/newUser", function (req, res) {
+    db.User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password,
+      Username: req.body.Username,
+    })
+    .then(function (dbUser) {
+      console.log(dbUser)
+      res.json(dbUser)
+    });
+  });
+
   app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/inbox.html"));
   });
@@ -193,4 +285,5 @@ module.exports = function (app) {
   app.get("/api/message", passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({ message: "Hello world" });
   })
+  app.get('/api/me', passport.authenticate('jwt', { session: false }), (req, res) => res.json(req.user.Username));
 };

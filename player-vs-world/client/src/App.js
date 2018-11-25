@@ -8,15 +8,20 @@ import SignUp from "./components/pages/SignUp";
 import Main from "./components/pages/Main";
 import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
-import Inbox from "./components/pages/Inbox";
+import inbox from "./components/pages/Inbox";
 import Message from "./components/pages/message";
 import HomePage from './components/pages/HomePage'
 import DashboardPage from './components/pages/DashboardPage';
 import LoginPage from './components/pages/LoginPage'
 import Authentication from './components/Authentication'
+import Inbox from './components/pages/Inbox'
 import Auth from './utils/auth';
+import Send from "./components/pages/Send";
+import Forum from "./components/pages/Forum";
 import './uikit/uikit.css';
 import './App.css';
+import Mail from "./components/pages/Mail.js";
+
 
 class App extends Component {
   state = {
@@ -54,8 +59,16 @@ class App extends Component {
             render = {(routeProps) => (<Inbox {...routeProps} token = {this.state.token}/>)}
             />
           <Route exact path="/Link" component={Link} />
+          <Route exact path="/Forum" component={Forum} />
+          <Route exact path="/Link" component={Link} />
           <Route exact path="/MakeLink" component={MakeLink} />
-          <Route exact path="/Message" component={Message} token={this.state.token} />
+          <Route exact path="/Message" component={Message} />
+          <Route exact path="/Send" component={Send} />
+          <Route path="/Mail"
+            render = {(routeProps) => (<Mail {...routeProps} token = {this.state.token}/>)}
+            />
+          <Route path="/Inbox" component={inbox} />
+         
         </div>
       </Router>
     )

@@ -8,11 +8,13 @@ import SignUp from "./components/pages/SignUp";
 import Main from "./components/pages/Main";
 import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
-import Inbox from "./components/pages/Inbox";
+import inbox from "./components/pages/Inbox";
 import Message from "./components/pages/message";
+import Send from "./components/pages/Send";
 import './uikit/uikit.css';
 import './App.css';
-import inbox from './components/pages/Inbox';
+
+import Mail from "./components/pages/Mail.js";
 
 
 class App extends Component {
@@ -26,11 +28,13 @@ class App extends Component {
           <Route exact path="/Survey" component={Survey} />
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/Main" component={Main} />
-          <Route exact path="/Inbox" component={inbox} />
           <Route exact path="/Link" component={Link} />
           <Route exact path="/MakeLink" component={MakeLink} />
-          <Route exact path="/Inbox" component={Inbox} />
           <Route exact path="/Message" component={Message} />
+          <Route exact path="/Send" component={Send} />
+          <Route path="/Mail" component={Mail} />
+          <Route path="/Inbox" component={inbox} />
+         
         </div>
       </Router>
     )

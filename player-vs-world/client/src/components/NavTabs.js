@@ -57,7 +57,7 @@ const NavTabs = () => (
                     <Link
                         to="/Inbox"
                         className={
-                            window.location.pathname === "/Inbox" ? "nav-link active" : "nav-link"
+                            window.location.pathname === "/Mail" ? "nav-link active" : "nav-link"
                         }
                     >
                         Inbox

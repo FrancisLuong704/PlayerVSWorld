@@ -9,7 +9,6 @@ import Main from "./components/pages/Main";
 import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
 import inbox from "./components/pages/Inbox";
-import DashboardPage from './components/pages/DashboardPage';
 
 import Inbox from './components/pages/Inbox'
 import Auth from './utils/auth';
@@ -39,25 +38,22 @@ class App extends Component {
       <Router>
         <div>
           {/* <Route exact path="/login" render={() => <LoginPage token={this.state.token} />} /> */}
-          <NavTabs token={this.state.token}/>
-          <Route exact path="/Dashboard" component={Dashboard} />
+          <NavTabs token={this.state.token} />
+          <PrivateRoute exact path="/Dashboard" component={Dashboard} token={this.state.token} />
           <Route exact path="/Login" render={() => <Login token={this.state.token} />} />
-          <Route exact path="/Survey" component={Survey} />
-          <Route exact path="/SignUp"  render = {(routeProps) => (<SignUp {...routeProps} token = {this.state.token}/>)}
-            />
-          <Route exact path="/Main" component={Main} />
-          <Route exact path="/Inbox"
-            render = {(routeProps) => (<Inbox {...routeProps} token = {this.state.token}/>)}
-            />
-          <Route exact path="/Link" component={Link} />
-          <Route exact path="/Forum" component={Forum} />
-          <Route exact path="/Link" component={Link} />
-          <Route exact path="/MakeLink" component={MakeLink} />
-          <PrivateRoute path="/Mail"
-            render = {(routeProps) => (<Mail {...routeProps} token = {this.state.token}/>)}
-            />
-          <Route path="/Inbox" component={inbox} />
-          <PrivateRoute path="/dashboard" component={DashboardPage} token={this.state.token} />
+          <PrivateRoute exact path="/Survey" component={Survey} token={this.state.token} />
+          <Route exact path="/SignUp" render={(routeProps) => (<SignUp {...routeProps} token={this.state.token} />)}
+          />
+          <PrivateRoute exact path="/Main" component={Main} token={this.state.token} />
+          <PrivateRoute exact path="/Inbox"
+            render={(routeProps) => (<Inbox {...routeProps} token={this.state.token} />)}
+          />
+          <PrivateRoute exact path="/Link" component={Link} token={this.state.token} />
+          <PrivateRoute exact path="/Forum" component={Forum} token={this.state.token} />
+          <PrivateRoute exact path="/Link" component={Link} token={this.state.token} />
+          <PrivateRoute exact path="/MakeLink" component={MakeLink} token={this.state.token} />
+          <PrivateRoute path="/Mail" component={Mail} token={this.state.token} />
+          <PrivateRoute path="/Inbox" component={inbox} token={this.state.token} />
         </div>
       </Router>
     )

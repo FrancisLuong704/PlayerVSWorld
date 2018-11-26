@@ -10,7 +10,7 @@ console.log(Auth.getToken())
 
 
 const Mail = () => (
-    <div class="uk-text-center uk-grid uk-margin-top" uk-grid>
+    <div class="uk-container-large uk-text-center uk-grid uk-margin-top uk-margin-large-left" uk-grid>
         <div class="uk-width-1-4">
             <div class="uk-nav uk-card-default uk-nav-default uk-margin-left nav-bg uk-padding card  ">
                 <ul class="uk-nav uk-nav-default uk-nav-center">
@@ -23,7 +23,7 @@ const Mail = () => (
         </div>
 
         <div class="uk-width-3-4">
-            <div class="uk-card uk-card-body nav-bg card">
+            <div class="uk-card uk-card-body nav-bg card uk-margin-small">
                 <h3 class="uk-card-title color-white">Messages</h3>
                 <Route exact path="/Mail/Inbox"
                     render={(routeProps) => (<Inbox {...routeProps} token={Auth.getToken()} user={Auth.getUser()} />)}

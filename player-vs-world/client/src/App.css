@@ -8,6 +8,11 @@ html {
     width: 100%;
 }
 
+body {
+    height: 100%;
+    width: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -15,4 +20,16 @@ h4,
 a,
 p {
     font-family: 'Raleway', sans-serif;
+}
+
+footer {
+    background: #131527;
+    position: relative;
+    Width: 100%;
+    bottom: 0;
+}
+
+.footer-logo {
+    width: 200px;
+    clear: both;
 }

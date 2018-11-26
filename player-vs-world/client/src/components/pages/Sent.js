@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Container } from "../../components/Grid";
+
 
 import { Link } from "react-router-dom";
 import "./Inbox.css";
 let user =""
-const data = { "receiver": user };
+
 
 
 class Sent extends Component {
@@ -39,9 +39,9 @@ class Sent extends Component {
     };
     render() {
         return (
-            <Container fluid>
+            <div className="uk-container">
                     {this.state.Messages.length ? (
-                        <table className="messageDump uk-table uk-table-striped" id="clickIt">
+                        <table className="messageDump uk-table-default" id="clickIt">
                         <tbody>
                         {this.state.Messages.map(message => (
                             
@@ -59,7 +59,7 @@ class Sent extends Component {
                     ) : (
                             <h3 class="color-white">You haven't sent any messages... </h3>
                         )}
-            </Container>
+            </div>
         )
     }
 }

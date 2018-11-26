@@ -81,6 +81,9 @@ export default {
   //Get all games
   gameGet: () => {
     return axios.get("/api/gameList")
-  }
+  },
+  findeProfile: (pass) => {
 
+    return axios.post("/api/profile", pass,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
+  }
 };

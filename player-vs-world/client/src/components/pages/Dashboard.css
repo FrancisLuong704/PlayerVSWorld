@@ -1,7 +1,6 @@
 /* container background*/
 .page-container {
-    height: cover;
-    width: cover;
+    width: 90%;
 }
 
 /* pvw title text */
@@ -20,6 +19,7 @@
     /* this is making the cards side by side */
     display:flex;
      flex-direction:row;
+     min-height: 500px;
 }
 /* cards */
 .dashboardCards {
@@ -28,8 +28,12 @@
     -webkit-border-radius: 26px;
     -moz-border-radius: 26px;
     border-radius: 26px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 /* card title text */
 .cardTitle {
     color: white;
+}
+.profile-pic{
+    width: 200px;
 }

@@ -65,8 +65,9 @@ const NavTabs = props => (
                             className={
                                 window.location.pathname === "/MakeLink" ? "nav-link active" : "nav-link"
                             }
-                        />
+                        >
                             new Forum
+                        </Link>    
                 </li>
                         {/* Link to make a new page in forum */}
                         <li className="nav-item">

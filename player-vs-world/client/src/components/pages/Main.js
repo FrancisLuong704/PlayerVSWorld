@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import { Link } from "react-router-dom";
 import "./Main.css";
 
 class Main extends Component {
@@ -13,7 +14,7 @@ class Main extends Component {
 
     blogFind = () => {
         API.blogFind()
-            .then(res => this.setState({ blogs: res.data, title: "", game: "", content: "" }))
+            .then(res => this.setState({ blogs: res.data, title: ""}))
             .catch(err => console.log(err))
     }
 
@@ -25,14 +26,8 @@ class Main extends Component {
                     {this.state.blogs.length ? (
                         <div>
                             {this.state.blogs.map(blog => (
-                                <div key={blog.id}>
-
-                                    <h1> {blog.title} </h1>
-
-                                    <h2> {blog.game}</h2>
-
-                                    <h3> {blog.content} </h3>
-
+                                <div data-id={blog.id} key={blog.id}>
+                                    <h1> <Link to={{ pathname: "/Link", state: {passed: (this, blog.id)}}}> {blog.title} </Link> </h1>
                                 </div>
                             ))}
                         </div>
@@ -46,5 +41,3 @@ class Main extends Component {
 }
 
 export default Main;
-
-

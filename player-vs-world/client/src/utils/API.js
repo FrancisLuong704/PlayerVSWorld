@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import Auth from './auth'
 export default {
   // Gets all Messages
   getMessages: (userInfo, token) => {
@@ -13,8 +13,9 @@ export default {
   },
   // <------------------------------------>
   //sending a message
-  sendMessage: (message, token) => {
-    return axios.post("/api/mail/send", message,{ headers :{Authorization: `Bearer ${token}`}});
+  sendMessage: (message) => {
+    console.log("this is the token yo",Auth.getToken())
+    return axios.post("/api/mail/send", message,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
   // <------------------------------------>
   // DELETE route for deleting sent mail

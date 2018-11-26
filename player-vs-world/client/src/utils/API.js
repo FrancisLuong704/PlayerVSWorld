@@ -64,6 +64,9 @@ export default {
   blogFind: function () {
     return axios.get("/api/blogs/getBlogs");
   },
+  blogId: function (id) {
+    return axios.get("/api/blogs/", id)
+  },
   // <------------------------------------>
   // make a user route
   newUser: function (User) {
@@ -72,4 +75,5 @@ export default {
   whoAmI: function (token){
     return axios.get("/api/me",{ headers :{Authorization: `Bearer ${token}`}});
   }
+
 };

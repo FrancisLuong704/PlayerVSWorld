@@ -10,13 +10,10 @@ class Inbox extends Component {
         title: "",
         sender: "",
         id:"",
-    
     };
     componentDidMount() {
         console.log(this.props.token)
-        
         this.getMe();
-       
     }
     getMe = () =>{
         API.whoAmI(this.props.token)

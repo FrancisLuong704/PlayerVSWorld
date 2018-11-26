@@ -6,16 +6,14 @@
 // =============================================================
 
 // Requiring our Todo model
-const db = require("../models");
+var db = require("../models");
 const express = require("express");
-const path = require("path");
-const jwt = require('jsonwebtoken')
-const passport = require("../utils/passport")
+var path = require("path");
 // Routes
 // =============================================================
 module.exports = function (app) {
- 
-  app.post("/api/mail/receiver", passport.authenticate('jwt',{session:false}),( req,res) => {
+  
+  app.post("/api/mail/receiver", function (req, res) {
     console.log(req.body)
     db.Mail.findAll({
       where: {
@@ -149,7 +147,6 @@ module.exports = function (app) {
 
   //find all friends of a certain user
   app.post("/api/users/friendFind", function (req, res) {
-    console.log("made it into friend find")
     db.Friend.findAll({
       where: {
         user: req.body.user,
@@ -157,8 +154,6 @@ module.exports = function (app) {
       attributes: ['frien'],
     })
       .then(function (dbPost) {
-
-
         console.log(dbPost)
         res.json(dbPost);
       });
@@ -219,6 +214,7 @@ module.exports = function (app) {
   //post new blogs
   app.post("/api/blogs/addBlogs", function (req, res) {
     db.Blog.create({
+      user: req.body.user,
       title: req.body.title,
       game: req.body.game,
       content: req.body.content
@@ -233,6 +229,43 @@ module.exports = function (app) {
     db.Blog.findAll({})
     .then(function (dbBlog) {
       res.json(dbBlog)
+    });
+  });
+
+  //get specific blog
+    //this finds all blogs by game
+    app.get("/api/blogs/:id", function (req, res) {
+      db.Blog.findAll({
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function(dbBlogId) {
+        res.json(dbBlogId)
+      });
+    });
+
+  //this finds all blogs by game
+  app.get("/api/blogs/blogGame", function (req, res) {
+    db.Blog.findAll({
+      where: {
+        game: req.body.game
+      }
+    })
+    .then(function(dbGame) {
+      res.json(dbGame)
+    });
+  });
+
+  //this finds all blogs by genre
+  app.get("/api/blogs/blogGenre", function (req, res) {
+    db.Blog.findAll({
+      where: {
+        genre: req.body.genre
+      }
+    })
+    .then(function(dbGenre) {
+      res.json(dbGenre)
     });
   });
 
@@ -255,35 +288,4 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/inbox.html"));
   });
 
-  app.post("/login", (req, res)=> {
-    const {email, password } =req.body
-    db.User.findOne({
-      where: {
-      email
-    }
-    })
-    .then(user => {
-  
-      if (!user) {
-        return res.status(401).json({success: false, msg: "Authentication failed."})
-      }
-      
-      if (password === user.password){
-        console.log(process.env.SECRET)
-        const token = jwt.sign(user.toJSON(),  process.env.SECRET);
-          res.json({success: true, token: 'JWT ' + token})
-      }
-      else {
-        res.status(401).send({success: false, msg: "Authentication failed. Wrong password"})
-       }
-    })
-    .catch(err => console.log(err))
-  })
-  app.get("/api/test", passport.authenticate('jwt',{session:false}),( req,res)=>{
-    res.send("It's working!!")
-  })
-  app.get("/api/message", passport.authenticate('jwt', { session: false }), (req, res) => {
-    res.json({ message: "Hello world" });
-  })
-  app.get('/api/me', passport.authenticate('jwt', { session: false }), (req, res) => res.json(req.user.Username));
 };

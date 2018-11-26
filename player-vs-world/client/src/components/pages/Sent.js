@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Container } from "../../components/Grid";
+
 
 import { Link } from "react-router-dom";
 import "./Inbox.css";
 let user =""
-const data = { "receiver": user };
+
 
 
 class Sent extends Component {

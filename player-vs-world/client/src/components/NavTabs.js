@@ -9,7 +9,7 @@ const NavTabs = props => (
         ? <nav className="main-nav uk-navbar-container uk-navbar uk-navbar-transparent">
             <div className="uk-navbar-left">
                 {/* Our website Logo goes here */}
-                <div className="uk-navbar-item uk-logo"><img className="nav-logo" src={require('../assets/images/PlayerVsWorldLogo.png')} /></div>
+                <div className="uk-navbar-item uk-logo"><img className="nav-logo" src={require('../assets/images/PlayerVsWorldLogo.png')} alt=""/></div>
                 {/* Search Bar is here */}
                 <div className="uk-navbar-item">
                     <form>
@@ -36,7 +36,7 @@ const NavTabs = props => (
         : <nav className="main-nav uk-navbar-container uk-navbar uk-navbar-transparent">
             <div className="uk-navbar-left">
                 {/* Our website Logo goes here */}
-                <div className="uk-navbar-item uk-logo"><img className="nav-logo" src={require('../assets/images/PlayerVsWorldLogo.png')} /></div>
+                <div className="uk-navbar-item uk-logo"><img className="nav-logo" src={require('../assets/images/PlayerVsWorldLogo.png')} alt=""/></div>
                 {/* Search Bar is here */}
                 <div className="uk-navbar-item">
                     <form>

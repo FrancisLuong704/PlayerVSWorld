@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
+import "./message.css";
 
 let id = {}
 
 class Inbox extends Component {
-
+    
     state = {
         Messages: {}
     };
@@ -14,6 +13,7 @@ class Inbox extends Component {
         const messageId = this.props.location.state.passed
         id = { "id": messageId }
         this.getLatest()
+        
     }
     getLatest = () => {
         console.log(id)
@@ -27,19 +27,20 @@ class Inbox extends Component {
 
     render() {
         return (
-            <Container fluid>
-                <Jumbotron >
-                    <div key={this.state.Messages.id}>
+            <div className="uk-container">
+                <div className="uk-card-default message-card">
+                    
+                    <div key={this.state.Messages.id} >
                         <h2>{this.state.Messages.title}</h2>
-                        From: {this.state.Messages.sender}<br/>
-                            To: {this.state.Messages.receiver}<br/>
+                        <p className="uk-text-meta uk-margin-left uk-flex-inline">From: {this.state.Messages.sender}</p>
+                        <p className="uk-text-meta uk-margin-left uk-flex-inline"> To: {this.state.Messages.receiver}</p>
                         
-                        {this.state.Messages.body}
+                        <p className="uk-padding-small uk-text-left">{this.state.Messages.body}</p>
                     </div>
 
 
-                </Jumbotron>
-            </Container>
+                </div>
+            </div>
         )
     }
 }

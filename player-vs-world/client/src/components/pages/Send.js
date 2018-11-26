@@ -3,7 +3,6 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import { Redirect } from "react-router-dom";
-const data = { "receiver": "max" }
 
 
 class Send extends Component {
@@ -16,6 +15,7 @@ class Send extends Component {
         fireRedirect:false
     };
     componentDidMount() {
+        console.log(this.props)
         if(!this.props.location.state|| !this.props.location.state.passed){
             return
         }
@@ -35,7 +35,7 @@ class Send extends Component {
         if (this.state.title && this.state.receiver && this.state.body) {
             API.sendMessage({
                 title: this.state.title,
-                sender: data.receiver ,
+                sender: this.props.user ,
                 receiver: this.state.receiver,
                 body: this.state.body
             })
@@ -76,7 +76,7 @@ class Send extends Component {
                             >
                                 Send
                 </FormBtn>
-                {fireRedirect && (<Redirect to = "/Inbox"/>)};
+                {fireRedirect && (<Redirect to = "/Mail/Inbox"/>)};
                         </form>
                         
                     </Col>

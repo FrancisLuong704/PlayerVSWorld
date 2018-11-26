@@ -9,4 +9,5 @@
     -webkit-border-radius: 26px;
     -moz-border-radius: 26px;
     border-radius: 26px;
+    min-height: 600px;
 }

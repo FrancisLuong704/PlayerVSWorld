@@ -1,63 +1,89 @@
 import axios from "axios";
+import Auth from "./auth"
 
 export default {
   // Gets all Messages
-  getMessages: function (userInfo) {
-    return axios.post("/api/mail/receiver", userInfo);
+  getMessages: (userInfo) => {
+    console.log(Auth.getToken())
+    return axios.post("/api/mail/receiver",userInfo,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
   // <------------------------------------>
   // Gets a single message by ID
-  getMessage: function (messageId) {
-    return axios.put("/api/mail/get", messageId);
+  getMessage: (messageId) => {
+    return axios.put("/api/mail/get", messageId,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
   // <------------------------------------>
   //sending a message
-  sendMessage: function (message) {
-    return axios.post("/api/mail/send", message);
+  sendMessage: (message) => {
+    console.log("this is the token yo",Auth.getToken())
+    return axios.post("/api/mail/send", message,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
   // <------------------------------------>
   // DELETE route for deleting sent mail
-  deleteSent: function (deletes) {
-    return axios.put("/api/mail/senderDelete", deletes);
+  deleteSent: (deletes) => {
+    return axios.put("/api/mail/senderDelete", deletes,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
-  deleteReciever: function (deletes) {
-    return axios.put("/api/mail/receiverDelete", deletes);
+  deleteReciever: (deletes) => {
+    return axios.put("/api/mail/receiverDelete", deletes,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
   // <------------------------------------>
   //sent mail
-  mailSender: function (messages) {
-    return axios.put("/api/mail/sender", messages);
+  mailSender: (messages) => {
+    return axios.put("/api/mail/sender", messages,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
   // <------------------------------------>
   // friend routes
-  friendAdd: function (friend) {
-    return axios.post("/api/users/friendAdd", friend);
+  friendAdd: (friend) => {
+    return axios.post("/api/users/friendAdd", friend,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
-  friendFind: function (friend) {
-    return axios.post("/api/users/friendFind", { user: friend });
+  friendfind: (friend) => {
+    console.log( "this is frined ajskdlf;jaskdlf;j ", friend)
+    return axios.post("/api/users/friendFind", friend,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
+
+
   // <------------------------------------>
   // group routes
-  groupAdd: function (group) {
-    return axios.post("/api/users/groupAdd", group);
+  groupAdd: (group) => {
+    return axios.post("/api/users/groupAdd", group,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
-  groupFind: function (groups) {
-    return axios.post("/api/users/groupFind", { user: groups });
+  groupFind: (groups) => {
+    return axios.post("/api/users/groupFind", { user: groups },{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
   // <------------------------------------>
   // game routes
-  gamesAdd: function (games) {
-    return axios.post("/api/users/gamesAdd", games);
+  gamesAdd: (games) => {
+    return axios.post("/api/users/gamesAdd", games,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
-  gamesFind: function (games) {
-    return axios.post("/api/users/gamesFind", { user: games });
+  gamesFind: (games) => {
+    return axios.post("/api/users/gamesFind", { user: games },{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
   // <------------------------------------>
   // blog routes
-  blogAdd: function (blogs) {
-    return axios.post("/api/blogs/getBlogs", blogs);
+  blogAdd: (blogs) => {
+    return axios.post("/api/blogs/addBlogs", blogs,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
-  blogFind: function (blogs) {
-    return axios.post("/api/blogs/getBlogs", blogs);
+  blogFind: () => {
+    return axios.get("/api/blogs/getBlogs",{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
+  },
+  blogId: function (id) {
+    return axios.get("/api/blogs/" + id);
+  },
+  // <------------------------------------>
+  // make a user route
+  newUser: (User) => {
+    return axios.post("/api/newUser", User,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
+  },
+  whoAmI: (token) => {
+    return axios.get("/api/me",{ headers :{Authorization: `Bearer ${token}`}});
+  },
+  //<------------------------------------->
+  //Get all games
+  gameGet: () => {
+    return axios.get("/api/gameList")
+  },
+  findeProfile: (pass) => {
+
+    return axios.post("/api/profile", pass,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   }
 };

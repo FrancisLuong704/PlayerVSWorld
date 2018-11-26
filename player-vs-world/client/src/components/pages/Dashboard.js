@@ -2,20 +2,38 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import "./Dashboard.css";
-
+import { Link } from "react-router-dom";
+import Auth from "../../utils/auth"
+let user = ""
 class Dashboard extends Component {
   //set state
   state = {
     friends: [],
     groups: [],
-    games: []
+    games: [],
+    photo: "",
+    description: "",
   }
   //after component mounts
   componentDidMount() {
+    user = Auth.getUser()
     //this.friendFind();
     this.groupFind();
     this.gamesFind();
+    this.findTheInfo()
   }
+  findTheInfo = () => {
+    API.findeProfile({ userName: user })
+      .then(res => {
+        this.setState({
+          photo: res.data.photo,
+          description: res.data.description
+        })
+        console.log(this.state.photo, this.state.description)
+      })
+      .catch(err => console.log(err))
+  }
+
   //find friends
   // friendFind = () => {
   //   console.log("made it this far")
@@ -42,9 +60,45 @@ class Dashboard extends Component {
       // page container
       <div className="uk-container page-container">
         {/* title and dashboard title */}
-        <h1 className="uk-heading-primary uk-margin-medium-left pvw">Player VS World</h1>
+       
         <h1 className="uk-margin-medium-left prof">Profile</h1>
         {/* card container */}
+        <div className="cardRows">
+          {/* friend card */}
+          <div className="uk-width-1-3@s  uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
+            <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
+              <div>
+              <h1 className="uk-card-title cardTitle">{user}</h1>
+              </div>
+              <div>
+              
+              {this.state.photo.length ? (
+                <div>
+                    <img className="nav-logo" src={this.state.photo}  />
+                </div>
+              ) : (
+                <img className="nav-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"  />
+                )}
+              </div>
+              <div>
+                Contact {user}: <Link to={{ pathname: "/Mail/Send", state: {passed: (this, user)}}}>Message</Link> 
+              </div>
+            </div>
+          </div>
+          {/* game card */}
+          <div className="uk-width-1-1@s cardBody uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
+            <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
+              <h2 className="uk-card-title cardTitle">Description</h2>
+              {this.state.description.length ? (
+                <div>
+                   {this.state.description}
+                </div>
+              ) : (
+                  <h3>User has not written a description</h3>
+                )}
+            </div>
+          </div>
+        </div>
         <div className="cardRows">
           {/* friend card */}
           <div className="uk-width-1-3@s  uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
@@ -55,9 +109,9 @@ class Dashboard extends Component {
                   {this.state.friends.map(user => (
                     <div key={user.frien}>
 
-                        <strong>
-                          {user.frien}
-                        </strong>
+                      <strong>
+                        {user.frien}
+                      </strong>
 
                     </div>
                   ))}
@@ -76,9 +130,9 @@ class Dashboard extends Component {
                   {this.state.games.map(user => (
                     <div key={user.games}>
 
-                        <strong>
-                          {user.games}
-                        </strong>
+                      <strong>
+                        {user.games}
+                      </strong>
 
                     </div>
                   ))}
@@ -97,9 +151,9 @@ class Dashboard extends Component {
                   {this.state.groups.map(user => (
                     <div key={user.groups}>
 
-                        <strong>
-                          {user.groups}
-                        </strong>
+                      <strong>
+                        {user.groups}
+                      </strong>
 
                     </div>
                   ))}

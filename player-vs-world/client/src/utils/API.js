@@ -76,6 +76,9 @@ export default {
   },
   whoAmI: (token) => {
     return axios.get("/api/me",{ headers :{Authorization: `Bearer ${token}`}});
-  }
+  },
+  findeProfile: (pass) => {
 
+    return axios.post("/api/profile", pass,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
+  }
 };

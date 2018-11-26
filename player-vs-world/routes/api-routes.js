@@ -320,4 +320,19 @@ module.exports = function (app) {
     res.json({ message: "Hello world" });
   })
   app.get('/api/me', passport.authenticate('jwt', { session: false }), (req, res) => res.json(req.user.Username));
+
+  app.post("/api/profile",  passport.authenticate('jwt', { session: false }), (req, res) => {
+    console.log("made it")
+     db.User.findOne({
+          where: {
+            Username: req.body.userName
+          },
+          attributes: ['description', 'photo'],
+        })
+
+          .then(function (returned) {
+
+            res.json(returned)
+          })
+      })
 };

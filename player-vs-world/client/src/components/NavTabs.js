@@ -44,7 +44,11 @@ const NavTabs = props => (
                         <button className="uk-button uk-button-default "><label className="search-text">Search</label></button>
                     </form>
                 </div>
+                <div className="uk-navbar-item">
+                  Welcome! {Auth.getUser()}
+                </div>
             </div>
+
             {/* switching over to the right side of navbar */}
             <div className="uk-navbar-right">
                 <ul className="uk-navbar-nav">
@@ -59,6 +63,17 @@ const NavTabs = props => (
                             Main
                     </Link>
                     </li>
+                    {/* Visit your Dashboard */}
+                    <li>
+                            <Link
+                                to="/Dashboard"
+                                className={
+                                    window.location.pathname === "/Dashboard" ? "nav-link active" : "nav-link"
+                                }
+                            >
+                                Profile
+                    </Link>
+                        </li>
                     {/* Link to make a new page in forum */}
                     <li className="nav-item">
                         <Link
@@ -81,17 +96,7 @@ const NavTabs = props => (
                                 Forums
                     </Link>
                         </li>
-                        {/* Visit your Dashboard */}
-                        <li>
-                            <Link
-                                to="/Dashboard"
-                                className={
-                                    window.location.pathname === "/Dashboard" ? "nav-link active" : "nav-link"
-                                }
-                            >
-                                Dashboard
-                    </Link>
-                        </li>
+                        
                         {/* Visit your inbox */}
                         <li>
                             <Link

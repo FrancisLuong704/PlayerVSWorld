@@ -38,7 +38,12 @@ module.exports = function (sequelize, DataTypes) {
     description: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    photo: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
+    
   });
   return User;
 };

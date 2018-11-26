@@ -2,15 +2,22 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import "./Dashboard.css";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth"
 let user = ""
+=======
+import Auth from "../../utils/auth";
+let user = {};
+
+>>>>>>> 6a7eaeacd232ff5ce48797ba5b5a4231789a92c6
 class Dashboard extends Component {
   //set state
   state = {
     friends: [],
     groups: [],
     games: [],
+<<<<<<< HEAD
     photo: "",
     description: "",
   }
@@ -41,15 +48,34 @@ class Dashboard extends Component {
       .then(res => this.setState({ friends: res.data }))
       .catch(err => console.log(err))
   }
+=======
+  }
+  //after component mounts
+  componentDidMount() {
+    user = Auth.getUser();
+    console.log("dashboard user check:" + user)
+    this.friendFind();
+    this.groupFind();
+    this.gamesFind();
+
+  }
+
+  //find friends
+  friendFind = () => {
+    API.friendFind(user)
+      .then(res => this.setState({ friends: res.data }))
+      .catch(err => console.log(err))
+  }
+>>>>>>> 6a7eaeacd232ff5ce48797ba5b5a4231789a92c6
   //find groups
   groupFind = () => {
-    API.groupFind("Joel")
+    API.groupFind(user)
       .then(res => this.setState({ groups: res.data }))
       .catch(err => console.log(err))
   }
   //find games
   gamesFind = () => {
-    API.gamesFind("Joel")
+    API.gamesFind(user)
       .then(res => this.setState({ games: res.data }))
       .catch(err => console.log(err))
   }

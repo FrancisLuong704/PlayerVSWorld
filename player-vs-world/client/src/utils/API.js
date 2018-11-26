@@ -70,7 +70,7 @@ export default {
   newUser: (User) => {
     return axios.post("/api/newUser", User,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
-  whoAmI: () => {
-    return axios.get("/api/me",{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
+  whoAmI: (token) => {
+    return axios.get("/api/me",{ headers :{Authorization: `Bearer ${token}`}});
   }
 };

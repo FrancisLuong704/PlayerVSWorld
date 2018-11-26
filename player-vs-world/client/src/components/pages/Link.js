@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Container } from "../../components/Grid";
 let id = {}
 
 class Link extends Component {
@@ -20,8 +19,10 @@ class Link extends Component {
     }
 
     render() {
+
         return (
-            <Container>
+            <div className="uk-container uk-margin-large-top">
+                <div className="uk-card-default uk-padding">
                     {this.state.blog.length ? (
                         <div>
                             {this.state.blog.map(blog => (
@@ -35,9 +36,9 @@ class Link extends Component {
                     ) : (
                             <h3>No Results to Display</h3>
                         )}
-
+                </div>
                     
-            </Container>
+            </div>
         )
     }
 }

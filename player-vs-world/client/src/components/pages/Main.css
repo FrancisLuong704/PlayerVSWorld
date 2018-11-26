@@ -1,3 +1,13 @@
+.container{
+    min-height: 510px;
+}
 .mainPVW {
     color: white;
+}
+.postCard {
+    background: #303663;
+    color: white;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    border-radius: 26px;
 }

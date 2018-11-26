@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Container } from "../../components/Grid";
 import { Link } from "react-router-dom";
 import "./Inbox.css"
 
@@ -39,9 +38,9 @@ class Inbox extends Component {
     };
     render() {
         return (
-            <Container fluid>
+            <div className="uk-container" >
                     {this.state.Messages.length ? (
-                        <table className="messageDump uk-table uk-table-striped" id="clickIt">
+                        <table className="messageDump uk-table-default" id="clickIt">
                         <tbody>
                         {this.state.Messages.map(message => (
                             
@@ -59,7 +58,7 @@ class Inbox extends Component {
                     ) : (
                             <h3 class="color-white">You haven't recieved any new messages... </h3>
                         )}
-            </Container>
+            </div>
         )
     }
 }

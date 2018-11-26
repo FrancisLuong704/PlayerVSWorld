@@ -40,14 +40,14 @@ class Dashboard extends Component {
   render() {
     return (
       // page container
-      <div className="uk-container-large page-container">
+      <div className="uk-container page-container">
         {/* title and dashboard title */}
         <h1 className="uk-heading-primary uk-margin-medium-left pvw">Player VS World</h1>
         <h1 className="uk-margin-medium-left prof">Profile</h1>
         {/* card container */}
         <div className="cardRows">
           {/* friend card */}
-          <div className="uk-width-1-3@s cardBody uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
+          <div className="uk-width-1-3@s  uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
             <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
               <h2 className="uk-card-title cardTitle">Friends</h2>
               {this.state.friends.length ? (

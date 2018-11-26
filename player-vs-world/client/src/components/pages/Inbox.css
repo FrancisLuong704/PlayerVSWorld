@@ -1,48 +1,63 @@
 .inbox-card {
-    background: #303663;
-    margin-top: 200px;
-    -webkit-border-radius: 26px;
-    -moz-border-radius: 26px;
-    border-radius: 26px;
-    
-   
+  background: #303663;
+  margin-top: 200px;
+  -webkit-border-radius: 26px;
+  -moz-border-radius: 26px;
+  border-radius: 26px;
+ 
+
+
 
 }
 
 .inbox-title {
-    
-    border: 1px black solid;
+
+  border: 1px black solid;
   border-radius: 4px;
 }
-.sender{
-    
-    width: 15%;
-    border: 1px black solid;
-  border-radius: 4px;
-}
-.recer{
-  color:black;
+
+.sender {
+
   width: 15%;
   border: 1px black solid;
-border-radius: 4px;
-}
-.message{
-    width: 80%;
-    border: 1px black solid;
   border-radius: 4px;
 }
-.delete{
-   
-    border: 1px black solid;
+
+.recer {
+  color: black;
+  width: 15%;
+  border: 1px black solid;
   border-radius: 4px;
 }
-.messageDump{
-    background-color: white;
-  border-radius: 4px;
-    width: 100%;
-    border: 1px black solid;
+
+.message {
+  width: 80%;
+  border: 1px black solid;
   border-radius: 4px;
 }
+
+.delete {
+
+  border: 1px black solid;
+  border-radius: 4px;
+}
+
+.messageDump {
+  background: #555c91;
+  border-radius: 4px;
+  width: 100%;
+  border: 1px black solid;
+  border-radius: 4px;
+}
+.messageDump a{
+  color: white;
+}
+
+.messageDump a:hover{
+  color: black;
+}
+
+
 .color-white {
   color: white;
 }

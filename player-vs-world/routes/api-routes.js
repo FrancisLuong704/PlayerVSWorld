@@ -6,9 +6,11 @@
 // =============================================================
 
 // Requiring our Todo model
-var db = require("../models");
+const db = require("../models");
 const express = require("express");
-var path = require("path");
+const path = require("path");
+const jwt = require('jsonwebtoken')
+const passport = require("../utils/passport")
 // Routes
 // =============================================================
 module.exports = function (app) {
@@ -57,13 +59,8 @@ module.exports = function (app) {
       })
 
   })
-<<<<<<< HEAD
 //sending a message 
   app.post("/api/mail/send", passport.authenticate('jwt',{session:false}),( req,res) => {
-=======
-  //sending a message 
-  app.post("/api/mail/send", function (req, res) {
->>>>>>> 3de262348008444f10a19108cc8036a41624eca8
 
     db.Mail.create({
       sender: req.body.sender,
@@ -151,14 +148,8 @@ module.exports = function (app) {
   });
 
   //find all friends of a certain user
-<<<<<<< HEAD
-  app.post("/api/users/friendFind", passport.authenticate('jwt',{session:false}),( req,res) => {
-    console.log("made it into friend find")
-    db.Friend.findAll({
-=======
   app.post("/api/users/friendFind", function (req, res) {
     db.Profile.findAll({
->>>>>>> 3de262348008444f10a19108cc8036a41624eca8
       where: {
         user: req.body.user,
       },
@@ -298,7 +289,6 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/inbox.html"));
   });
 
-<<<<<<< HEAD
   app.post("/login", (req, res)=> {
     const {email, password } = req.body
     db.User.findOne({
@@ -331,6 +321,3 @@ module.exports = function (app) {
   })
   app.get('/api/me', passport.authenticate('jwt', { session: false }), (req, res) => res.json(req.user.Username));
 };
-=======
-};
->>>>>>> 3de262348008444f10a19108cc8036a41624eca8

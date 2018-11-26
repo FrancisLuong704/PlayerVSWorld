@@ -9,12 +9,11 @@ class Link extends Component {
     };
 
     componentDidMount() {
-        const blogId = this.props.location.state.passed
-        id = blogId;
-        this.blogId();
+        id = this.props.location.state.passed
+        this.blogI();
     }
 
-    blogId = () => {
+    blogI = () => {
         API.blogId(id)
             .then(res => this.setState({ blog: res.data, id: "", title: "", game: "", content: ""  }))
             .catch(err => console.log(err))

@@ -2,74 +2,74 @@ import axios from "axios";
 
 export default {
   // Gets all Messages
-  getMessages: function(userInfo, token) {
+  getMessages: (userInfo, token) => {
     console.log(token)
     return axios.post("/api/mail/receiver",userInfo,{ headers :{Authorization: `Bearer ${token}`}});
   },
   // <------------------------------------>
   // Gets a single message by ID
-  getMessage: function (messageId) {
-    return axios.put("/api/mail/get", messageId);
+  getMessage: (messageId, token) => {
+    return axios.put("/api/mail/get", messageId,{ headers :{Authorization: `Bearer ${token}`}});
   },
   // <------------------------------------>
   //sending a message
-  sendMessage: function (message) {
-    return axios.post("/api/mail/send", message);
+  sendMessage: (message, token) => {
+    return axios.post("/api/mail/send", message,{ headers :{Authorization: `Bearer ${token}`}});
   },
   // <------------------------------------>
   // DELETE route for deleting sent mail
-  deleteSent: function (deletes) {
-    return axios.put("/api/mail/senderDelete", deletes);
+  deleteSent: (deletes, token) => {
+    return axios.put("/api/mail/senderDelete", deletes,{ headers :{Authorization: `Bearer ${token}`}});
   },
-  deleteReciever: function (deletes) {
-    return axios.put("/api/mail/receiverDelete", deletes);
+  deleteReciever: (deletes, token) => {
+    return axios.put("/api/mail/receiverDelete", deletes,{ headers :{Authorization: `Bearer ${token}`}});
   },
   // <------------------------------------>
   //sent mail
-  mailSender: function (messages) {
-    return axios.put("/api/mail/sender", messages);
+  mailSender: (messages, token) => {
+    return axios.put("/api/mail/sender", messages,{ headers :{Authorization: `Bearer ${token}`}});
   },
   // <------------------------------------>
   // friend routes
-  friendAdd: function (friend) {
-    return axios.post("/api/users/friendAdd", friend);
+  friendAdd: (friend, token) => {
+    return axios.post("/api/users/friendAdd", friend,{ headers :{Authorization: `Bearer ${token}`}});
   },
-  friendfind: function(friend) {
+  friendfind: (friend, token) => {
     console.log( "this is frined ajskdlf;jaskdlf;j ", friend)
-    return axios.post("/api/users/friendFind", friend);
+    return axios.post("/api/users/friendFind", friend,{ headers :{Authorization: `Bearer ${token}`}});
   },
 
 
   // <------------------------------------>
   // group routes
-  groupAdd: function (group) {
-    return axios.post("/api/users/groupAdd", group);
+  groupAdd: (group, token) => {
+    return axios.post("/api/users/groupAdd", group,{ headers :{Authorization: `Bearer ${token}`}});
   },
-  groupFind: function (groups) {
-    return axios.post("/api/users/groupFind", { user: groups });
+  groupFind: (groups, token) => {
+    return axios.post("/api/users/groupFind", { user: groups },{ headers :{Authorization: `Bearer ${token}`}});
   },
   // <------------------------------------>
   // game routes
-  gamesAdd: function (games) {
-    return axios.post("/api/users/gamesAdd", games);
+  gamesAdd: (games, token) => {
+    return axios.post("/api/users/gamesAdd", games,{ headers :{Authorization: `Bearer ${token}`}});
   },
-  gamesFind: function (games) {
-    return axios.post("/api/users/gamesFind", { user: games });
+  gamesFind: (games, token) => {
+    return axios.post("/api/users/gamesFind", { user: games },{ headers :{Authorization: `Bearer ${token}`}});
   },
   // <------------------------------------>
   // blog routes
-  blogAdd: function (blogs) {
-    return axios.post("/api/blogs/addBlogs", blogs);
+  blogAdd: (blogs, token) => {
+    return axios.post("/api/blogs/addBlogs", blogs,{ headers :{Authorization: `Bearer ${token}`}});
   },
-  blogFind: function () {
-    return axios.get("/api/blogs/getBlogs");
+  blogFind: (token) => {
+    return axios.get("/api/blogs/getBlogs",{ headers :{Authorization: `Bearer ${token}`}});
   },
   // <------------------------------------>
   // make a user route
-  newUser: function (User) {
-    return axios.post("/api/newUser", User);
+  newUser: (User, token) => {
+    return axios.post("/api/newUser", User,{ headers :{Authorization: `Bearer ${token}`}});
   },
-  whoAmI: function (token){
+  whoAmI: (token) => {
     return axios.get("/api/me",{ headers :{Authorization: `Bearer ${token}`}});
   }
 };

@@ -33,7 +33,7 @@ module.exports = function (app) {
 
 
   // Post route for a single message
-  app.put("/api/mail/get", function (req, res) {
+  app.put("/api/mail/get", passport.authenticate('jwt',{session:false}),( req,res) => {
     console.log("made it")
     const id = req.body.id
     db.Mail.update({
@@ -60,7 +60,7 @@ module.exports = function (app) {
 
   })
 //sending a message 
-  app.post("/api/mail/send", function (req, res) {
+  app.post("/api/mail/send", passport.authenticate('jwt',{session:false}),( req,res) => {
 
     db.Mail.create({
       sender: req.body.sender,
@@ -75,7 +75,7 @@ module.exports = function (app) {
 
 
   // DELETE route for deleting sent mail
-  app.put("/api/mail/senderDelete", function (req, res) {
+  app.put("/api/mail/senderDelete", passport.authenticate('jwt',{session:false}),( req,res) => {
     db.Mail.update({
       senderDelete: true
     },
@@ -90,7 +90,7 @@ module.exports = function (app) {
       });
   });
   // DELETE route for deleting received mail
-  app.put("/api/mail/receiverDelete", function (req, res) {
+  app.put("/api/mail/receiverDelete", passport.authenticate('jwt',{session:false}),( req,res) => {
     db.Mail.update({
       recieverDelete: true
     },
@@ -105,7 +105,7 @@ module.exports = function (app) {
       });
   });
   // PUT route for getting all sent messages
-  app.put("/api/mail/sender", function (req, res) {
+  app.put("/api/mail/sender", passport.authenticate('jwt',{session:false}),( req,res) => {
     db.Mail.findAll({
       where: {
         sender: req.body.sender,
@@ -122,7 +122,7 @@ module.exports = function (app) {
 
 
 
-  app.put("/api/mail/senderMessage", function (req, res) {
+  app.put("/api/mail/senderMessage", passport.authenticate('jwt',{session:false}),( req,res) => {
     db.Mail.findOne({
       where: {
         id: req.body.id,
@@ -136,7 +136,7 @@ module.exports = function (app) {
   });
 
   //add friends to a specific user
-  app.post("/api/users/friendAdd", function (req, res) {
+  app.post("/api/users/friendAdd", passport.authenticate('jwt',{session:false}),( req,res) => {
     console.log(req.body);
     db.Friend.create({
       user: req.body.user,
@@ -148,7 +148,7 @@ module.exports = function (app) {
   });
 
   //find all friends of a certain user
-  app.post("/api/users/friendFind", function (req, res) {
+  app.post("/api/users/friendFind", passport.authenticate('jwt',{session:false}),( req,res) => {
     console.log("made it into friend find")
     db.Friend.findAll({
       where: {
@@ -165,7 +165,7 @@ module.exports = function (app) {
   });
 
   // add new group to a specific user
-  app.post("/api/users/groupAdd", function (req, res) {
+  app.post("/api/users/groupAdd", passport.authenticate('jwt',{session:false}),( req,res) => {
     console.log(req.body);
     db.Profile.create({
       user: req.body.user,
@@ -177,7 +177,7 @@ module.exports = function (app) {
   });
 
   //find all groups that user is associated with
-  app.post("/api/users/groupFind", function (req, res) {
+  app.post("/api/users/groupFind", ( req,res) => {
     db.Profile.findAll({
       where: {
         user: req.body.user,
@@ -191,7 +191,7 @@ module.exports = function (app) {
   });
 
   // add new games to user
-  app.post("/api/users/gamesAdd", function (req, res) {
+  app.post("/api/users/gamesAdd", passport.authenticate('jwt',{session:false}),( req,res) => {
     console.log(req.body);
     db.Profile.create({
       user: req.body.user,
@@ -203,7 +203,7 @@ module.exports = function (app) {
   });
 
   // find all games with certain user
-  app.post("/api/users/gamesFind", function (req, res) {
+  app.post("/api/users/gamesFind", ( req,res) => {
     db.Profile.findAll({
       where: {
         user: req.body.user,
@@ -217,7 +217,7 @@ module.exports = function (app) {
   });
   
   //post new blogs
-  app.post("/api/blogs/addBlogs", function (req, res) {
+  app.post("/api/blogs/addBlogs", passport.authenticate('jwt',{session:false}),( req,res) => {
     db.Blog.create({
       title: req.body.title,
       game: req.body.game,
@@ -229,7 +229,7 @@ module.exports = function (app) {
   });
 
   //get all the blogs
-  app.get("/api/blogs/getBlogs", function (req, res) {
+  app.get("/api/blogs/getBlogs", ( req,res) => {
     db.Blog.findAll({})
     .then(function (dbBlog) {
       res.json(dbBlog)
@@ -237,7 +237,7 @@ module.exports = function (app) {
   });
 
   //create a user
-  app.post("/api/newUser", function (req, res) {
+  app.post("/api/newUser", passport.authenticate('jwt',{session:false}),( req,res) => {
     db.User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -251,12 +251,12 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/", function (req, res) {
+  app.get("/", passport.authenticate('jwt',{session:false}),( req,res) => {
     res.sendFile(path.join(__dirname, "../public/inbox.html"));
   });
 
   app.post("/login", (req, res)=> {
-    const {email, password } =req.body
+    const {email, password } = req.body
     db.User.findOne({
       where: {
       email

@@ -237,7 +237,7 @@ module.exports = function (app) {
   });
 
   //create a user
-  app.post("/api/newUser", passport.authenticate('jwt',{session:false}),( req,res) => {
+  app.post("/api/newUser", ( req,res) => {
     db.User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -251,7 +251,7 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/", passport.authenticate('jwt',{session:false}),( req,res) => {
+  app.get("/", ( req,res) => {
     res.sendFile(path.join(__dirname, "../public/inbox.html"));
   });
 

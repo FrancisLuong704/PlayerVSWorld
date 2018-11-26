@@ -199,6 +199,13 @@ module.exports = function (app) {
       });
   });
 
+  app.get("/api/gameList", (req,res) => {
+    db.Game.findAll({})
+    .then(function(dbGames) {
+      res.json(dbGames);
+    }).catch(err => console.log(err))
+  });
+
   // find all games with certain user
   app.post("/api/users/gamesFind", ( req,res) => {
     db.Profile.findAll({

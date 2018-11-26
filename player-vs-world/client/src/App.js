@@ -17,6 +17,7 @@ import Forum from "./components/pages/Forum";
 import './uikit/uikit.css';
 import './App.css';
 import Mail from "./components/pages/Mail.js";
+import Games from "./components/pages/games"
 
 
 class App extends Component {
@@ -71,6 +72,7 @@ class App extends Component {
           <PrivateRoute exact path="/Forum" component={Forum} token={this.state.token} />
           <PrivateRoute exact path="/Link" component={Link} token={this.state.token} />
           <PrivateRoute exact path="/MakeLink" component={MakeLink} token={this.state.token} />
+          <PrivateRoute exact path="/Games" component={Games} token={this.state.token} />
           <PrivateRoute path="/Mail" component={Mail} token={this.state.token} />
           <PrivateRoute path="/Inbox" component={inbox} token={this.state.token} />
         </div>

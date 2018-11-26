@@ -76,6 +76,11 @@ export default {
   },
   whoAmI: (token) => {
     return axios.get("/api/me",{ headers :{Authorization: `Bearer ${token}`}});
+  },
+  //<------------------------------------->
+  //Get all games
+  gameGet: () => {
+    return axios.get("/api/gameList")
   }
 
 };

@@ -26,14 +26,14 @@ class Sent extends Component {
         console.log()
         API.mailSender({'sender': this.props.user})
             .then(res =>
-                    console.log(res)
-               // this.setState({ Messages: res.data, id:"", title: "", receiver: ""})
+                  //  console.log(res)
+               this.setState({ Messages: res.data, id:"", title: "", receiver: ""})
             )
             .catch(err => console.log(err));
     };
     deleteMessage = id => {
-        console.log("made it", )
-        API.senderDelete({"id":id, "sender":data.sender})
+        console.log("made it", this.props.user)
+        API.deleteSent({"id":id, "sender":this.props.user})
       .then(res => this.getLatest())
       .catch(err => console.log(err));
     };
@@ -46,7 +46,7 @@ class Sent extends Component {
                         {this.state.Messages.map(message => (
                             
                             <tr key={message.id} className="clickThis">
-                                <td className="sender">{message.receiver} </td>
+                                <td className="sender"><Link to={{ pathname: "/Mail/Send", state: {passed: (this, message.receiver)}}}>{message.receiver}</Link> </td>
                                     <td className="message" value = {message.id} ><Link to={{ pathname: "/Mail/Message", state: {passed: (this, message.id), user:(this.props.user)}}}>
                                         {message.title}</Link></td>
                                     <td className="delete"><center><button className="uk-button uk-button-danger" onClick={this.deleteMessage.bind(this, message.id)}>X</button></center></td>

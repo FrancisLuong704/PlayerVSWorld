@@ -30,7 +30,6 @@ class Login extends Component {
             }
         }).then(res => res.json())
             .then(response => {
-<<<<<<< HEAD
                 const token = response.token.split(' ')[1]
                 API.whoAmI(token)
                     .then(res => {
@@ -39,14 +38,6 @@ class Login extends Component {
                     })
                 
             }
-=======
-
-                const token = response.token.split(' ')[1]
-                Auth.login(token);
-
-            }
-
->>>>>>> ad17b1af50af3897506aef7ea49f8d60cd0e8ffc
             )
             .catch(error => console.error('Error:', error));
     }
@@ -54,10 +45,6 @@ class Login extends Component {
         if (this.props.token) {
             return <Redirect to='/dashboard' />
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> ad17b1af50af3897506aef7ea49f8d60cd0e8ffc
         return (
             <div className="uk-container uk-text-center@s">
                 {/* Title */}

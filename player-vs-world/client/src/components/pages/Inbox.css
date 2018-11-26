@@ -15,9 +15,16 @@
   border-radius: 4px;
 }
 .sender{
+    
     width: 15%;
     border: 1px black solid;
   border-radius: 4px;
+}
+.recer{
+  color:black;
+  width: 15%;
+  border: 1px black solid;
+border-radius: 4px;
 }
 .message{
     width: 80%;

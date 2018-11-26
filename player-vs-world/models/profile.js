@@ -29,5 +29,15 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
     });
+
+    Profile.associate = function(models) {
+        Profile.belongsTo(models.User, {
+            foreignKey:
+            {
+                allowNull: false
+            }
+        });
+    };
+
     return Profile;
 };

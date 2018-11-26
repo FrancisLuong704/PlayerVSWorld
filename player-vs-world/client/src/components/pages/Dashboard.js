@@ -2,36 +2,41 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import "./Dashboard.css";
+import Auth from "../../utils/auth";
+let user = {};
 
 class Dashboard extends Component {
   //set state
   state = {
     friends: [],
     groups: [],
-    games: []
+    games: [],
   }
   //after component mounts
   componentDidMount() {
-    //this.friendFind();
+    user = Auth.getUser();
+    console.log("dashboard user check:" + user)
+    this.friendFind();
     this.groupFind();
     this.gamesFind();
+
   }
+
   //find friends
-  // friendFind = () => {
-  //   console.log("made it this far")
-  //   API.friendFind("Joel")
-  //     .then(res => this.setState({ friends: res.data }))
-  //     .catch(err => console.log(err))
-  // }
+  friendFind = () => {
+    API.friendFind(user)
+      .then(res => this.setState({ friends: res.data }))
+      .catch(err => console.log(err))
+  }
   //find groups
   groupFind = () => {
-    API.groupFind("Joel")
+    API.groupFind(user)
       .then(res => this.setState({ groups: res.data }))
       .catch(err => console.log(err))
   }
   //find games
   gamesFind = () => {
-    API.gamesFind("Joel")
+    API.gamesFind(user)
       .then(res => this.setState({ games: res.data }))
       .catch(err => console.log(err))
   }

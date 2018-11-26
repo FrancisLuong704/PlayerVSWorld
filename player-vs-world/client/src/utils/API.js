@@ -36,8 +36,8 @@ export default {
   friendAdd: (friend) => {
     return axios.post("/api/users/friendAdd", friend,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
-  friendfind: (friend) => {
-    console.log( "this is frined ajskdlf;jaskdlf;j ", friend)
+  friendFind: (friend) => {
+    console.log("axios call check: ", friend)
     return axios.post("/api/users/friendFind", friend,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   },
 
@@ -68,6 +68,17 @@ export default {
   },
   blogId: function (id) {
     return axios.get("/api/blogs/" + id);
+  },
+  blogGame: function (game) {
+    return axios.get("/api/blogs/blogGame/" + game);
+  }
+    // <------------------------------------>
+  // make a comment route
+  commentAdd: (comment) => {
+    return axios.post("/api/blogs/comments", comment)
+  },
+  commentFind: () => {
+    return axios.get("/api/blogs/getComments")
   },
   // <------------------------------------>
   // make a user route

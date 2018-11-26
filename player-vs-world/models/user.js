@@ -34,11 +34,14 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         len: [1]
       }
-    },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: true
     }
   });
+
+  User.associate = function(models) {
+    User.hasMany(models.Profile, {
+      onDelete: "cascade"
+    });
+  }
+
   return User;
 };

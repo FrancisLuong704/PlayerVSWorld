@@ -34,13 +34,13 @@ class Dashboard extends Component {
       .catch(err => console.log(err))
   }
 
-  //find friends
-  // friendFind = () => {
-  //   console.log("made it this far")
-  //   API.friendFind("Joel")
-  //     .then(res => this.setState({ friends: res.data }))
-  //     .catch(err => console.log(err))
-  // }
+  // find friends
+  friendFind = () => {
+    console.log("made it this far")
+    API.friendFind("Joel")
+      .then(res => this.setState({ friends: res.data }))
+      .catch(err => console.log(err))
+  }
   //find groups
   groupFind = () => {
     API.groupFind("Joel")
@@ -65,7 +65,7 @@ class Dashboard extends Component {
         {/* card container */}
         <div className="cardRows">
           {/* friend card */}
-          <div className="uk-width-1-3@s  uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
+          <div className="uk-width-1-3 uk-grid-collapse uk-grid uk-margin-medium">
             <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
               <div>
               <h1 className="uk-card-title cardTitle">{user}</h1>
@@ -77,7 +77,7 @@ class Dashboard extends Component {
                     <img className="nav-logo" src={this.state.photo}  />
                 </div>
               ) : (
-                <img className="nav-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"  />
+                <img className="profile-pic" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"  />
                 )}
               </div>
               <div>
@@ -86,7 +86,7 @@ class Dashboard extends Component {
             </div>
           </div>
           {/* game card */}
-          <div className="uk-width-1-1@s cardBody uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
+          <div className="uk-width-2-3 cardBody uk-grid-collapse uk-grid uk-margin-medium">
             <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
               <h2 className="uk-card-title cardTitle">Description</h2>
               {this.state.description.length ? (
@@ -101,8 +101,8 @@ class Dashboard extends Component {
         </div>
         <div className="cardRows">
           {/* friend card */}
-          <div className="uk-width-1-3@s  uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
-            <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
+          <div className="uk-width-1-3 uk-grid-collapse uk-grid ">
+            <div className="uk-card uk-card-transparent dashboardCards uk-card-body uk-margin-medium">
               <h2 className="uk-card-title cardTitle">Friends</h2>
               {this.state.friends.length ? (
                 <div>
@@ -122,8 +122,8 @@ class Dashboard extends Component {
             </div>
           </div>
           {/* game card */}
-          <div className="uk-width-1-3@s cardBody uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
-            <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
+          <div className="uk-width-1-3 cardBody uk-grid-collapse uk-grid ">
+            <div className="uk-card uk-card-transparent dashboardCards uk-card-body uk-margin-medium">
               <h2 className="uk-card-title cardTitle">Games</h2>
               {this.state.games.length ? (
                 <div>
@@ -143,8 +143,8 @@ class Dashboard extends Component {
             </div>
           </div>
           {/* group card */}
-          <div className="uk-card uk-width-1-3@s cardBody uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
-            <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
+          <div className="uk-card uk-width-1-3 cardBody uk-grid-collapse uk-grid ">
+            <div className="uk-card uk-card-transparent dashboardCards uk-card-body uk-margin-medium">
               <h2 className="uk-card-title cardTitle">My Groups</h2>
               {this.state.groups.length ? (
                 <div>

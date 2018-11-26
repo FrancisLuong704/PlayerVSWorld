@@ -138,7 +138,7 @@ module.exports = function (app) {
   //add friends to a specific user
   app.post("/api/users/friendAdd", passport.authenticate('jwt',{session:false}),( req,res) => {
     console.log(req.body);
-    db.Profile.create({
+    db.Friend.create({
       user: req.body.user,
       frien: req.body.frien
     })
@@ -149,14 +149,14 @@ module.exports = function (app) {
 
   //find all friends of a certain user
   app.post("/api/users/friendFind", function (req, res) {
-    db.Profile.findAll({
+    db.Friend.findAll({
       where: {
         user: req.body.user,
       },
       attributes: ['frien'],
     })
       .then(function (dbPost) {
-        console.log(dbPost)
+        
         res.json(dbPost);
       });
   });

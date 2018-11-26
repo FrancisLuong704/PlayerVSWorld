@@ -4,7 +4,6 @@ import API from "../../utils/API";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth"
-let user = ""
 class Dashboard extends Component {
   //set state
   state = {
@@ -13,17 +12,46 @@ class Dashboard extends Component {
     games: [],
     photo: "",
     description: "",
+    user:""
   }
   //after component mounts
   componentDidMount() {
-    user = Auth.getUser()
-    //this.friendFind();
+        if(!this.props.location.state|| !this.props.location.state.passed){
+        this.setState({
+          user: Auth.getUser()
+          }, () => {
+            this.startUpScript();
+        });
+        
+        }
+        else{
+        this.setState({
+          user: this.props.location.state.passed
+          }, () => {
+            this.startUpScript();
+        });
+        }
+        
+        
+    
+   
+
+  }
+  startUpScript= () =>{
+    this.friendFind();
     this.groupFind();
     this.gamesFind();
     this.findTheInfo()
   }
+ difUser=newU=>{
+  this.setState({
+    user: newU}, () => {
+      this.startUpScript();
+  });
+ }
   findTheInfo = () => {
-    API.findeProfile({ userName: user })
+    console.log("inside find the info",this.state.user)
+    API.findeProfile({ userName: this.state.user })
       .then(res => {
         this.setState({
           photo: res.data.photo,
@@ -34,22 +62,22 @@ class Dashboard extends Component {
       .catch(err => console.log(err))
   }
 
-  //find friends
-  // friendFind = () => {
-  //   console.log("made it this far")
-  //   API.friendFind("Joel")
-  //     .then(res => this.setState({ friends: res.data }))
-  //     .catch(err => console.log(err))
-  // }
-  //find groups
+  //findfriends
+  friendFind = () => {
+    console.log("friends stuff", this.state.user)
+    API.friendfind({user:this.state.user})
+      .then(res => this.setState({ friends: res.data }))
+      .catch(err => console.log(err))
+  }
+ // find groups
   groupFind = () => {
-    API.groupFind("Joel")
+    API.groupFind(this.state.user)
       .then(res => this.setState({ groups: res.data }))
       .catch(err => console.log(err))
   }
   //find games
   gamesFind = () => {
-    API.gamesFind("Joel")
+    API.gamesFind(this.state.user)
       .then(res => this.setState({ games: res.data }))
       .catch(err => console.log(err))
   }
@@ -68,20 +96,20 @@ class Dashboard extends Component {
           <div className="uk-width-1-3@s  uk-grid-collapse uk-grid uk-margin-small-left uk-margin-small-right">
             <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
               <div>
-              <h1 className="uk-card-title cardTitle">{user}</h1>
+              <h1 className="uk-card-title cardTitle">{this.state.user}</h1>
               </div>
               <div>
               
               {this.state.photo.length ? (
                 <div>
-                    <img className="nav-logo" src={this.state.photo}  />
+                    <img className="nav-logo" src={this.state.photo} alt = "uploaded by" />
                 </div>
               ) : (
-                <img className="nav-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"  />
+                <img className="nav-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt= "" />
                 )}
               </div>
               <div>
-                Contact {user}: <Link to={{ pathname: "/Mail/Send", state: {passed: (this, user)}}}>Message</Link> 
+                Contact {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: {passed: (this, this.stateuser)}}}>Message</Link> 
               </div>
             </div>
           </div>
@@ -110,7 +138,9 @@ class Dashboard extends Component {
                     <div key={user.frien}>
 
                       <strong>
-                        {user.frien}
+                      <Link to={{ pathname: "/Dashboard/Friend/", state: {passed: (this, user.frien)}}}><div onClick={() =>{ 
+                        this.difUser(user.frien)
+                        }}>{user.frien}</div></Link>
                       </strong>
 
                     </div>

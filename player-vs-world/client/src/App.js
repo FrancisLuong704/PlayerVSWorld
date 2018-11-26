@@ -59,6 +59,7 @@ class App extends Component {
           {/* <Route exact path="/login" render={() => <LoginPage token={this.state.token} />} /> */}
           <NavTabs token={this.state.token} />
           <PrivateRoute exact path="/Dashboard" component={Dashboard} token={this.state.token} />
+          <PrivateRoute exact path="/Dashboard/Friend" component={Dashboard} token={this.state.token} />
           <Route exact path="/Login" render={() => <Login token={this.state.token} />} />
           <PrivateRoute exact path="/Survey" component={Survey} token={this.state.token} />
           <Route exact path="/SignUp" render={(routeProps) => (<SignUp {...routeProps} token={this.state.token} />)}

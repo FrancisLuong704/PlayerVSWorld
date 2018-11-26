@@ -57,9 +57,10 @@ class App extends Component {
       <Router>
         <div>
           {/* <Route exact path="/login" render={() => <LoginPage token={this.state.token} />} /> */}
-          <NavTabs token={this.state.token}/>
-          <Route exact path="/Dashboard" component={Dashboard} />
+          <NavTabs token={this.state.token} />
+          <PrivateRoute exact path="/Dashboard" component={Dashboard} token={this.state.token} />
           <Route exact path="/Login" render={() => <Login token={this.state.token} />} />
+<<<<<<< HEAD
           <Route exact path="/Survey" component={Survey} />
           <Route exact path="/SignUp"  render = {(routeProps) => (<SignUp {...routeProps} token = {this.state.token}/>)}
             />
@@ -74,6 +75,21 @@ class App extends Component {
           <PrivateRoute path="/Mail"component={Mail} token={this.state.token}/>
           <Route path="/Inbox" component={inbox} />
          
+=======
+          <PrivateRoute exact path="/Survey" component={Survey} token={this.state.token} />
+          <Route exact path="/SignUp" render={(routeProps) => (<SignUp {...routeProps} token={this.state.token} />)}
+          />
+          <PrivateRoute exact path="/Main" component={Main} token={this.state.token} />
+          <PrivateRoute exact path="/Inbox"
+            render={(routeProps) => (<Inbox {...routeProps} token={this.state.token} />)}
+          />
+          <PrivateRoute exact path="/Link" component={Link} token={this.state.token} />
+          <PrivateRoute exact path="/Forum" component={Forum} token={this.state.token} />
+          <PrivateRoute exact path="/Link" component={Link} token={this.state.token} />
+          <PrivateRoute exact path="/MakeLink" component={MakeLink} token={this.state.token} />
+          <PrivateRoute path="/Mail" component={Mail} token={this.state.token} />
+          <PrivateRoute path="/Inbox" component={inbox} token={this.state.token} />
+>>>>>>> ad17b1af50af3897506aef7ea49f8d60cd0e8ffc
         </div>
       </Router>
     )

@@ -6,16 +6,14 @@
 // =============================================================
 
 // Requiring our Todo model
-const db = require("../models");
+var db = require("../models");
 const express = require("express");
-const path = require("path");
-const jwt = require('jsonwebtoken')
-const passport = require("../utils/passport")
+var path = require("path");
 // Routes
 // =============================================================
 module.exports = function (app) {
- 
-  app.post("/api/mail/receiver", passport.authenticate('jwt',{session:false}),( req,res) => {
+
+  app.post("/api/mail/receiver", function (req, res) {
     console.log(req.body)
     db.Mail.findAll({
       where: {
@@ -53,13 +51,13 @@ module.exports = function (app) {
         })
 
           .then(function (dbMessage) {
-            
+
             res.json(dbMessage)
           })
       })
 
   })
-//sending a message 
+  //sending a message 
   app.post("/api/mail/send", function (req, res) {
 
     db.Mail.create({
@@ -138,7 +136,7 @@ module.exports = function (app) {
   //add friends to a specific user
   app.post("/api/users/friendAdd", function (req, res) {
     console.log(req.body);
-    db.Friend.create({
+    db.Profile.create({
       user: req.body.user,
       frien: req.body.frien
     })
@@ -149,16 +147,13 @@ module.exports = function (app) {
 
   //find all friends of a certain user
   app.post("/api/users/friendFind", function (req, res) {
-    console.log("made it into friend find")
-    db.Friend.findAll({
+    db.Profile.findAll({
       where: {
         user: req.body.user,
       },
       attributes: ['frien'],
     })
       .then(function (dbPost) {
-
-
         console.log(dbPost)
         res.json(dbPost);
       });
@@ -215,25 +210,62 @@ module.exports = function (app) {
         res.json(dbGames);
       });
   });
-  
+
   //post new blogs
   app.post("/api/blogs/addBlogs", function (req, res) {
     db.Blog.create({
+      user: req.body.user,
       title: req.body.title,
       game: req.body.game,
       content: req.body.content
     })
-    .then(function (dbBlog) {
-      res.json(dbBlog)
-    });
+      .then(function (dbBlog) {
+        res.json(dbBlog)
+      });
   });
 
   //get all the blogs
   app.get("/api/blogs/getBlogs", function (req, res) {
     db.Blog.findAll({})
-    .then(function (dbBlog) {
-      res.json(dbBlog)
-    });
+      .then(function (dbBlog) {
+        res.json(dbBlog)
+      });
+  });
+
+  //get specific blog
+  app.get("/api/blogs/:id", function (req, res) {
+    db.Blog.findAll({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function (dbBlog) {
+        res.json(dbBlog)
+      });
+  });
+
+  //this finds all blogs by game
+  app.get("/api/blogs/blogGame", function (req, res) {
+    db.Blog.findAll({
+      where: {
+        game: req.body.game
+      }
+    })
+      .then(function (dbGame) {
+        res.json(dbGame)
+      });
+  });
+
+  //this finds all blogs by genre
+  app.get("/api/blogs/blogGenre", function (req, res) {
+    db.Blog.findAll({
+      where: {
+        genre: req.body.genre
+      }
+    })
+      .then(function (dbGenre) {
+        res.json(dbGenre)
+      });
   });
 
   //create a user
@@ -245,45 +277,14 @@ module.exports = function (app) {
       password: req.body.password,
       Username: req.body.Username,
     })
-    .then(function (dbUser) {
-      console.log(dbUser)
-      res.json(dbUser)
-    });
+      .then(function (dbUser) {
+        console.log(dbUser)
+        res.json(dbUser)
+      });
   });
 
   app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/inbox.html"));
   });
 
-  app.post("/login", (req, res)=> {
-    const {email, password } =req.body
-    db.User.findOne({
-      where: {
-      email
-    }
-    })
-    .then(user => {
-  
-      if (!user) {
-        return res.status(401).json({success: false, msg: "Authentication failed."})
-      }
-      
-      if (password === user.password){
-        console.log(process.env.SECRET)
-        const token = jwt.sign(user.toJSON(),  process.env.SECRET);
-          res.json({success: true, token: 'JWT ' + token})
-      }
-      else {
-        res.status(401).send({success: false, msg: "Authentication failed. Wrong password"})
-       }
-    })
-    .catch(err => console.log(err))
-  })
-  app.get("/api/test", passport.authenticate('jwt',{session:false}),( req,res)=>{
-    res.send("It's working!!")
-  })
-  app.get("/api/message", passport.authenticate('jwt', { session: false }), (req, res) => {
-    res.json({ message: "Hello world" });
-  })
-  app.get('/api/me', passport.authenticate('jwt', { session: false }), (req, res) => res.json(req.user.Username));
 };

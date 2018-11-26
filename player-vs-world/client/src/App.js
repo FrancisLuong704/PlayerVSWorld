@@ -10,6 +10,7 @@ import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
 import inbox from "./components/pages/Inbox";
 
+import API from "./utils/API";
 import Inbox from './components/pages/Inbox'
 import Auth from './utils/auth';
 import Forum from "./components/pages/Forum";
@@ -20,20 +21,38 @@ import Mail from "./components/pages/Mail.js";
 
 class App extends Component {
   state = {
-    token: Auth.getToken()
+    token: Auth.getToken(),
+    person: ""
   }
 
   componentDidMount() {
     Auth.onAuthChange(this.handleAuthChange)
     console.log("test", this.state.token)
+    
   }
-
+  
   handleAuthChange = token => {
     this.setState({
       token
     })
   }
+  getMe = () =>{
+    API.whoAmI(this.props.token)
+    .then(res =>{
+        
+        this.setState({
+            person: res.data
+          })
+        alert(this.state.person)
+    })
+    .catch(err => console.log(err));
+}
   render() {
+    if (this.props.token)
+    {
+      
+        this.getMe()
+    }
     return (
       <Router>
         <div>
@@ -41,6 +60,22 @@ class App extends Component {
           <NavTabs token={this.state.token} />
           <PrivateRoute exact path="/Dashboard" component={Dashboard} token={this.state.token} />
           <Route exact path="/Login" render={() => <Login token={this.state.token} />} />
+<<<<<<< HEAD
+          <Route exact path="/Survey" component={Survey} />
+          <Route exact path="/SignUp"  render = {(routeProps) => (<SignUp {...routeProps} token = {this.state.token}/>)}
+            />
+          <Route exact path="/Main" component={Main} />
+          <Route exact path="/Inbox"
+            render = {(routeProps) => (<Inbox {...routeProps} token = {this.state.token}/>)}
+            />
+          <Route exact path="/Link" component={Link} />
+          <Route exact path="/Forum" component={Forum} />
+          <Route exact path="/Link" component={Link} />
+          <Route exact path="/MakeLink" component={MakeLink} />
+          <PrivateRoute path="/Mail"component={Mail} token={this.state.token}/>
+          <Route path="/Inbox" component={inbox} />
+         
+=======
           <PrivateRoute exact path="/Survey" component={Survey} token={this.state.token} />
           <Route exact path="/SignUp" render={(routeProps) => (<SignUp {...routeProps} token={this.state.token} />)}
           />
@@ -54,6 +89,7 @@ class App extends Component {
           <PrivateRoute exact path="/MakeLink" component={MakeLink} token={this.state.token} />
           <PrivateRoute path="/Mail" component={Mail} token={this.state.token} />
           <PrivateRoute path="/Inbox" component={inbox} token={this.state.token} />
+>>>>>>> ad17b1af50af3897506aef7ea49f8d60cd0e8ffc
         </div>
       </Router>
     )

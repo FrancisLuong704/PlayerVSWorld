@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
+
 
 class Dashboard extends Component {
   //set state
@@ -175,6 +177,9 @@ class Dashboard extends Component {
               {this.state.own ? (
                 <div>
                   Welcome to your Profile!
+                  <div>
+                    <p className="color-white">Change profile image <FontAwesomeIcon className="uk-margin-small-left" icon={faImage} color="white" /></p>
+                  </div>
                 </div>
               ) : (
                   <div>

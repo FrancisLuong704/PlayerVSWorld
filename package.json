@@ -33,5 +33,17 @@
     "install": "cd client && yarn install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
-  }
+  },
+  "description": "* **Folder**: `12-Blog-CRUD/Unsolved`",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoungFrank95/PlayerVSWorld.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/YoungFrank95/PlayerVSWorld/issues"
+  },
+  "homepage": "https://github.com/YoungFrank95/PlayerVSWorld#readme"
 }

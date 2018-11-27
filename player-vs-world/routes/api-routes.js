@@ -135,7 +135,7 @@ module.exports = function (app) {
       });
   });
 
-  //add friends to a specific user
+  //: friends to a specific user
   app.post("/api/users/friendAdd", passport.authenticate('jwt',{session:false}),( req,res) => {
     console.log(req.body);
     db.Friend.create({
@@ -378,7 +378,8 @@ module.exports = function (app) {
            if (count != 0) {
             res.json (true);
            }
-           res.json(false);
+           else{
+           res.json(false);}
          });
         })
 };

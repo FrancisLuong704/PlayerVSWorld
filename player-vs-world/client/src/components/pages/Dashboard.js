@@ -3,7 +3,11 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
-import Auth from "../../utils/auth"
+import Auth from "../../utils/auth";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+
 class Dashboard extends Component {
   //set state
   state = {
@@ -174,9 +178,9 @@ class Dashboard extends Component {
                 </div>
               ) : (
                   <div>
-                    <div>
+                    <div className="uk-margin-top">
                       {/* make message an envelope */}
-                      Contact {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: { passed: (this, this.state.user) } }}>Message</Link>
+                      <h3 className="color-white">Message {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: { passed: (this, this.state.user) } }}><FontAwesomeIcon icon={faEnvelope} color="white" /></Link></h3>
                     </div>
                     {this.state.own ? (
                       <div>
@@ -191,11 +195,11 @@ class Dashboard extends Component {
                              </div>
                             ) : (
                                 <div>
-                                  <div>
-                                    Would you like to be friends with {this.state.user}  <div onClick={() => {
+                                  <div className="uk-flex">
+                                    <h3 className="color-white">Add {this.state.user} as a friend?</h3> <div onClick={() => {
                           this.AddFriend()
                           //  replace add with plus
-                        }}> ADD </div>
+                        }}> <FontAwesomeIcon className="uk-margin-small-left" size="lg" icon={faPlusCircle} /> </div>
                                   </div>
                                 </div>)}
                           </div>
@@ -212,7 +216,7 @@ class Dashboard extends Component {
                   {this.state.description}
                 </div>
               ) : (
-                  <h3>User has not written a description</h3>
+                  <h3 className="color-white">User has not written a description</h3>
                 )}
             </div>
           </div>
@@ -227,7 +231,7 @@ class Dashboard extends Component {
                   {this.state.friends.map(user => (
                     <div key={user.frien}>
 
-                      <strong>
+                      <strong className="uk-text-large">
                         <Link to={{ pathname: "/Dashboard/Friend/", state: { passed: (this, user.frien) } }}><div onClick={() => {
                           this.difUser(user.frien)
                         }}>{user.frien}</div></Link>
@@ -237,7 +241,7 @@ class Dashboard extends Component {
                   ))}
                 </div>
               ) : (
-                  <h3>No Results to Display</h3>
+                  <h3 className="color-white">No Results to Display</h3>
                 )}
             </div>
           </div>
@@ -261,7 +265,7 @@ class Dashboard extends Component {
                   ))}
                 </div>
               ) : (
-                  <h3>No Results to Display</h3>
+                  <h3 className="color-white">No Results to Display</h3>
                 )}
             </div>
           </div>
@@ -282,7 +286,7 @@ class Dashboard extends Component {
                   ))}
                 </div>
               ) : (
-                  <h3>No Results to Display</h3>
+                  <h3 className="color-white">No Results to Display</h3>
                 )}
             </div>
           </div>

@@ -6,16 +6,16 @@ import Searchbar from "../Searchbar";
 
 class Search extends Component {
     state = {
-        blogs: []
+        friend: []
     }
 
     componentDidMount() {
-        this.blogFind();
+        this.userSearch();
     }
 
-    blogFind = () => {
-        API.blogGame(Searchbar.state)
-            .then(res => this.setState({ blogs: res.data, title: ""}))
+    userSearch = () => {
+        API.userSearch(Searchbar.state)
+            .then(res => this.setState({ friend: res.data}))
             .catch(err => console.log(err))
     }
 
@@ -24,13 +24,13 @@ class Search extends Component {
             <div className="uk-container-large uk-margin-large ">
                 <h1 className="uk-heading-primary uk-margin-medium-left">Search Results</h1>
                 <div className="uk-container uk-width-1-2 container">
-                    {this.state.blogs.length ? (
+                    {this.state.friend.length ? (
                         <div>
-                            {this.state.blogs.map(blog => (
+                            {this.state.friend.map(friend => (
                                 <div className="uk-card-default uk-padding postCard uk-margin">
-                                    <div data-id={blog.id} key={blog.id}>
-                                        <h1> <Link to={{ pathname: "/Link", state: {passed: (this, blog.id)}}}> {blog.title} </Link> </h1>
-                                    </div>
+                                    
+                                        <h1>{friend.n}</h1>
+                                    
                                 </div>
                             ))}
                         </div>

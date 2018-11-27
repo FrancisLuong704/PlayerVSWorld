@@ -398,4 +398,16 @@ module.exports = function (app) {
             res.json(returned)
       
          })})
+
+         app.post("/api/search",  passport.authenticate('jwt', { session: false }), (req, res) => {
+          console.log("made it search", req.body.user)
+           db.User.count({ where: { Username: req.body.user } })
+           .then(count => {
+             if (count !== 0) {
+              res.json (true);
+             }
+             else{
+             res.json(false);}
+           });
+          })
 };

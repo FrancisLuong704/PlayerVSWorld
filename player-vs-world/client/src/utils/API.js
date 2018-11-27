@@ -105,4 +105,8 @@ export default {
     console.log("made it to API profile")
   return axios.post("/api/updateProfile", pass,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
 },
+userSearch: (searchName) => {
+  console.log("made it to search")
+return axios.post("/api/search", searchName,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
+},
 };

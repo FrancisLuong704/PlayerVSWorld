@@ -17,8 +17,9 @@ import Auth from './utils/auth';
 import Forum from "./components/pages/Forum";
 import './uikit/uikit.css';
 import './App.css';
-import Mail from "./components/pages/Mail.js";
+import Mail from "./components/pages/Mail";
 import Games from "./components/pages/games"
+import Redirec from "./components/pages/redirect"
 
 
 class App extends Component {
@@ -62,6 +63,7 @@ class App extends Component {
           <NavTabs token={this.state.token} />
           <PrivateRoute exact path="/Dashboard" component={Dashboard} token={this.state.token} />
           <PrivateRoute exact path="/Dashboard/Friend" component={Dashboard} token={this.state.token} />
+          <PrivateRoute exact path="/Dashboard/Search" component={Dashboard} token={this.state.token} />
           <Route exact path="/Login" render={() => <Login token={this.state.token} />} />
           <PrivateRoute exact path="/Survey" component={Survey} token={this.state.token} />
           <Route exact path="/SignUp" render={(routeProps) => (<SignUp {...routeProps} token={this.state.token} />)}
@@ -79,6 +81,7 @@ class App extends Component {
           <PrivateRoute path="/Mail" component={Mail} token={this.state.token} />
           <PrivateRoute path="/Inbox" component={inbox} token={this.state.token} />
           <PrivateRoute path="/Search" component={Search} token={this.state.token} />
+          <PrivateRoute path="/Redirec" component={Redirec} token={this.state.token} />
           <br></br>
           <footer className="uk-width-1-1 uk-margin-top uk-padding uk-text-center footer"><img className="footer-logo" src={require('../src/assets/images/footer-logo.png')} alt=""/></footer>
         </div>

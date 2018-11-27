@@ -42,9 +42,9 @@ class Games extends Component {
                                 {this.state.games.map(games => (
                                     <tr key={games.id}>
 
-                                        <td class="color-white">{games.name}</td>
-                                        <td class="color-white">{games.genre}</td> 
-                                        <td class="color-white"><button className="uk-button uk-button-default" onClick={() => this.handleSubmit(games.name)}>Add</button></td>
+                                        <td className="color-white">{games.name}</td>
+                                        <td className="color-white">{games.genre}</td> 
+                                        <td className="color-white"><button className="uk-button uk-button-default" onClick={() => this.handleSubmit(games.name)}>Add</button></td>
                                         
 
                                     </tr>

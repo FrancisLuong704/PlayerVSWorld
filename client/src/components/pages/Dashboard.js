@@ -254,7 +254,7 @@ class Dashboard extends Component {
               <h2 className="uk-card-title cardTitle">Games</h2>
               {this.state.own ? (
               <div>
-                Add Games: <Link to={{ pathname: "/Games" }}>Games</Link>
+                Add <Link to={{ pathname: "/Games" }}>Games</Link>
               </div>
               ):(
                 <div></div>

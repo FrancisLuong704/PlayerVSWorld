@@ -96,5 +96,9 @@ export default {
   findeProfile: (pass) => {
 
     return axios.post("/api/profile", pass,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
+  },
+  isItMe: (pass) => {
+      console.log("made it to API")
+    return axios.post("/api/isItMe", pass,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
   }
 };

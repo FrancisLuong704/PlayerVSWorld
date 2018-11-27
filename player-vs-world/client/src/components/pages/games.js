@@ -34,9 +34,9 @@ class Games extends Component {
 
     render() {
         return (
-            <div>
+            <div className="uk-container  uk-margin-medium-top uk-card-default uk-card-body">
                 {this.state.games.length ? (
-                    <div>
+                    <div className="uk-card-default uk-card-body">
                         {this.state.games.map(games => (
                             <div key={games.id}>
 

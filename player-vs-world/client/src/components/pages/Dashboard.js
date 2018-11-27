@@ -170,7 +170,12 @@ class Dashboard extends Component {
               </div>
               {this.state.own ? (
                 <div>
+                <div>
                   Welcome to your Profile!
+                </div>
+                <div>
+                 Would you like to edit your profile <Link to={{ pathname: "/Edit" }}>Edit</Link>
+              </div>
                 </div>
               ) : (
                   <div>
@@ -179,9 +184,7 @@ class Dashboard extends Component {
                       Contact {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: { passed: (this, this.state.user) } }}>Message</Link>
                     </div>
                     {this.state.own ? (
-                      <div>
-                        Welcome to your Profile!
-                </div>
+                      <div/>
                     ) : (
                         <div>
                           <div>
@@ -245,9 +248,13 @@ class Dashboard extends Component {
           <div className="uk-width-1-3 cardBody uk-grid-collapse uk-grid ">
             <div className="uk-card uk-card-transparent dashboardCards uk-card-body uk-margin-medium">
               <h2 className="uk-card-title cardTitle">Games</h2>
+              {this.state.own ? (
               <div>
                 Add Games: <Link to={{ pathname: "/Games" }}>Games</Link>
               </div>
+              ):(
+                <div></div>
+              )}
               {this.state.games.length ? (
                 <div>
                   {this.state.games.map(user => (

@@ -55,7 +55,8 @@ class Dashboard extends Component {
       this.setState({ own: true },
         () => {
           console.log("this should be triggered")
-          this.loadTheRest()})
+          this.loadTheRest()
+        })
     }
 
     else {
@@ -68,7 +69,7 @@ class Dashboard extends Component {
           this.loadTheRest()
         })
         .catch(err => console.log(err))
-        
+
     }
   }
   loadTheRest = () => {
@@ -134,6 +135,13 @@ class Dashboard extends Component {
       .catch(err => console.log(err))
   }
   // API.friendfind(this.props.match.params.user)
+  AddFriend =()=>{
+    console.log("yay you added a friend")
+    API.friendAdd({frien:this.state.user, user:Auth.getUser()})
+    .then(res=>this.startUpScript())
+    .catch(err => console.log(err))
+    
+  }
 
   render() {
     return (
@@ -160,9 +168,39 @@ class Dashboard extends Component {
                     <img className="nav-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="" />
                   )}
               </div>
-              <div>
-                Contact {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: { passed: (this, this.state.user) } }}>Message</Link>
-              </div>
+              {this.state.own ? (
+                <div>
+                  Welcome to your Profile!
+                </div>
+              ) : (
+                  <div>
+                    <div>
+                      {/* make message an envelope */}
+                      Contact {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: { passed: (this, this.state.user) } }}>Message</Link>
+                    </div>
+                    {this.state.own ? (
+                      <div>
+                        Welcome to your Profile!
+                </div>
+                    ) : (
+                        <div>
+                          <div>
+                            {this.state.friend ? (
+                              <div>
+                                You and {this.state.user} are friends.
+                             </div>
+                            ) : (
+                                <div>
+                                  <div>
+                                    Would you like to be friends with {this.state.user}  <div onClick={() => {
+                          this.AddFriend()
+                          //  replace add with plus
+                        }}> ADD </div>
+                                  </div>
+                                </div>)}
+                          </div>
+                        </div>)}
+                  </div>)}
             </div>
           </div>
           {/* game card */}

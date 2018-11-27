@@ -191,7 +191,7 @@ module.exports = function (app) {
 
   // add new games to user
   app.post("/api/users/gamesAdd", passport.authenticate('jwt',{session:false}),( req,res) => {
-    console.log(req.body);
+    
     db.Profile.create({
       user: req.body.user,
       games: req.body.games
@@ -369,4 +369,16 @@ module.exports = function (app) {
             res.json(returned)
           })
       })
+
+      app.post("/api/isItMe",  passport.authenticate('jwt', { session: false }), (req, res) => {
+        console.log( req.body.user, req.body.friend)
+
+         db.Friend.count({ where: { user: req.body.user, frien: req.body.friend } })
+         .then(count => {
+           if (count != 0) {
+            res.json (true);
+           }
+           res.json(false);
+         });
+        })
 };

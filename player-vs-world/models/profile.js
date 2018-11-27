@@ -2,7 +2,7 @@ module.exports = function (sequelize, DataTypes) {
     var Profile = sequelize.define("Profile", {
         user: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [1]
             }
@@ -29,15 +29,6 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
     });
-
-    Profile.associate = function(models) {
-        Profile.belongsTo(models.User, {
-            foreignKey:
-            {
-                allowNull: false
-            }
-        });
-    };
 
     return Profile;
 };

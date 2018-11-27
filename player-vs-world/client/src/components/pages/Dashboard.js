@@ -12,7 +12,10 @@ class Dashboard extends Component {
     games: [],
     photo: "",
     description: "",
-    user: ""
+    user: "",
+    friend: false,
+    own: false
+
   }
   //after component mounts
   componentDidMount() {
@@ -38,6 +41,38 @@ class Dashboard extends Component {
 
   }
   startUpScript = () => {
+    this.setState({
+      friends: [],
+      groups: [],
+      games: [],
+      photo: "",
+      description: "",
+      friend: false,
+      own: false
+
+    })
+    if (this.state.user === Auth.getUser()) {
+      this.setState({ own: true },
+        () => {
+          console.log("this should be triggered")
+          this.loadTheRest()})
+    }
+
+    else {
+      API.isItMe({ friend: this.state.user, user: Auth.getUser() })
+        .then(res => {
+          if (res.data) {
+            this.setState({ friend: true })
+          }
+          console.log("yo I am here")
+          this.loadTheRest()
+        })
+        .catch(err => console.log(err))
+        
+    }
+  }
+  loadTheRest = () => {
+    console.log("me", this.state.user, "Friend", this.state.friend)
     this.friendFind();
     this.groupFind();
     this.gamesFind();
@@ -126,7 +161,7 @@ class Dashboard extends Component {
                   )}
               </div>
               <div>
-                Contact {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: { passed: (this, this.stateuser) } }}>Message</Link>
+                Contact {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: { passed: (this, this.state.user) } }}>Message</Link>
               </div>
             </div>
           </div>

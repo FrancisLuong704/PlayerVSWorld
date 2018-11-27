@@ -319,10 +319,6 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/", ( req,res) => {
-    res.sendFile(path.join(__dirname, "../public/inbox.html"));
-  });
-
   app.post("/login", (req, res)=> {
     const {email, password } = req.body
     db.User.findOne({

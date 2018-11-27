@@ -10,6 +10,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 
 
+
 class Dashboard extends Component {
   //set state
   state = {
@@ -178,14 +179,17 @@ class Dashboard extends Component {
                 <div>
                   Welcome to your Profile!
                   <div>
-                    <p className="color-white">Change profile image <FontAwesomeIcon className="uk-margin-small-left" icon={faImage} color="white" /></p>
+                    <p className="color-white">Change profile image 
+                      <FontAwesomeIcon className="uk-margin-small-left" icon={faImage} color="white" onClick={() => {this.difUser(user.frien)}} />
+                    </p>
                   </div>
                 </div>
               ) : (
                   <div>
                     <div className="uk-margin-top">
                       {/* make message an envelope */}
-                      <h3 className="color-white">Message {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: { passed: (this, this.state.user) } }}><FontAwesomeIcon icon={faEnvelope} color="white" /></Link></h3>
+                      <h3 className="color-white">Message {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: { passed: (this, this.state.user) } }}>
+                      <FontAwesomeIcon icon={faEnvelope} color="white" /></Link></h3>
                     </div>
                     {this.state.own ? (
                       <div>

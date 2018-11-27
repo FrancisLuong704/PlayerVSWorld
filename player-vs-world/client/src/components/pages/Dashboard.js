@@ -174,7 +174,12 @@ class Dashboard extends Component {
               </div>
               {this.state.own ? (
                 <div>
+                <div>
                   Welcome to your Profile!
+                </div>
+                <div>
+                 Would you like to edit your profile <Link to={{ pathname: "/Edit" }}>Edit</Link>
+              </div>
                 </div>
               ) : (
                   <div>
@@ -183,9 +188,7 @@ class Dashboard extends Component {
                       <h3 className="color-white">Message {this.state.user}: <Link to={{ pathname: "/Mail/Send", state: { passed: (this, this.state.user) } }}><FontAwesomeIcon icon={faEnvelope} color="white" /></Link></h3>
                     </div>
                     {this.state.own ? (
-                      <div>
-                        Welcome to your Profile!
-                </div>
+                      <div/>
                     ) : (
                         <div>
                           <div>

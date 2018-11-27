@@ -10,7 +10,7 @@ import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
 import inbox from "./components/pages/Inbox";
 import Search from "./components/pages/Search";
-
+import Edit from "./components/pages/Edit"
 import API from "./utils/API";
 import Inbox from './components/pages/Inbox'
 import Auth from './utils/auth';
@@ -70,6 +70,7 @@ class App extends Component {
           <PrivateRoute exact path="/Inbox"
             render={(routeProps) => (<Inbox {...routeProps} token={this.state.token} />)}
           />
+          <PrivateRoute exact path="/Edit" component={Edit} token={this.state.token} />
           <PrivateRoute exact path="/Link" component={Link} token={this.state.token} />
           <PrivateRoute exact path="/Forum" component={Forum} token={this.state.token} />
           <PrivateRoute exact path="/Link" component={Link} token={this.state.token} />
@@ -79,7 +80,7 @@ class App extends Component {
           <PrivateRoute path="/Inbox" component={inbox} token={this.state.token} />
           <PrivateRoute path="/Search" component={Search} token={this.state.token} />
           <br></br>
-          <footer className="uk-width-1-1 uk-margin-top uk-padding uk-text-center footer"><img className="footer-logo" src={require('../src/assets/images/footer-logo.png')} /></footer>
+          <footer className="uk-width-1-1 uk-margin-top uk-padding uk-text-center footer"><img className="footer-logo" src={require('../src/assets/images/footer-logo.png')} alt=""/></footer>
         </div>
         
       </Router>

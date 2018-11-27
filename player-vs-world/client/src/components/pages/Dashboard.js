@@ -73,7 +73,7 @@ class Dashboard extends Component {
   //findfriends
   friendFind = () => {
     console.log("friends stuff", this.state.user)
-    API.friendfind({ user: this.state.user })
+    API.friendFind({ user: this.state.user })
       .then(res => {
         if (res.data !== null) {
           this.setState({ friends: res.data })

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Auth from "../../utils/auth";
-import { Container } from "../../components/Grid";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { TextArea, FormBtn } from "../../components/Form";
 let id = {};
 let sender = {};
 let title = {};

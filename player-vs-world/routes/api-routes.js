@@ -191,7 +191,7 @@ module.exports = function (app) {
 
   // add new games to user
   app.post("/api/users/gamesAdd", passport.authenticate('jwt',{session:false}),( req,res) => {
-    console.log(req.body);
+    
     db.Profile.create({
       user: req.body.user,
       games: req.body.games

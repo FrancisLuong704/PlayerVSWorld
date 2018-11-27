@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import Auth from "../../utils/auth"
 import "./Mail.css"
 
-let user = {};
+let user = "";
 
 
 class Games extends Component {

@@ -245,9 +245,13 @@ class Dashboard extends Component {
           <div className="uk-width-1-3 cardBody uk-grid-collapse uk-grid ">
             <div className="uk-card uk-card-transparent dashboardCards uk-card-body uk-margin-medium">
               <h2 className="uk-card-title cardTitle">Games</h2>
+              {this.state.own ? (
               <div>
                 Add Games: <Link to={{ pathname: "/Games" }}>Games</Link>
               </div>
+              ):(
+                <div></div>
+              )}
               {this.state.games.length ? (
                 <div>
                   {this.state.games.map(user => (

@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Redirect } from "react";
 import API from "../../utils/API";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import Auth from "../../utils/auth"
 import "./MakeLink.css"
+
+let user= "";
 
 class MakeLink extends Component {
     // create state
@@ -9,8 +12,13 @@ class MakeLink extends Component {
         blogs: [],
         title: "",
         game: "",
+        genre: "",
         content: ""
     };
+
+    componentDidMount() {
+        user = Auth.getUser();
+    }
 
     //on input change
     handleInputChange = event => {
@@ -26,7 +34,9 @@ class MakeLink extends Component {
         if (this.state.title && this.state.game && this.state.content) {
             API.blogAdd({
                 title: this.state.title,
+                user: user,
                 game: this.state.game,
+                genre: this.state.genre,
                 content: this.state.content
             })
                 .then(res => console.log(res))
@@ -34,12 +44,18 @@ class MakeLink extends Component {
         }
     };
 
+    renderRedirect = () => {
+        if (this.state.redirect) {
+          return <Redirect to='/Main' />
+        }
+      }
+
 
     render() {
         return (
             <div className="uk-container">
                 <div className="uk-text-center">
-                
+                {this.renderRedirect()}
                     <div className="uk-card uk-card-body cardContent uk-width-1-1 uk-margin-medium-top uk-margin-bottom">
                     <h1 className="text-white">Post a Thread!</h1>
                         
@@ -55,6 +71,12 @@ class MakeLink extends Component {
                                 onChange={this.handleInputChange}
                                 name="game"
                                 placeholder="Related Game (required)"
+                            />
+                            <Input
+                                value={this.state.genre}
+                                onChange={this.handleInputChange}
+                                name="genre"
+                                placeholder="Genre (required)"
                             />
                             <TextArea
                                 value={this.state.content}

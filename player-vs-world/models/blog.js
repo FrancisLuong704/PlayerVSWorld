@@ -7,13 +7,20 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
               }
         },
-        // user: {
-        //     type: DataTypes.STRING,
-        //     allowNull: true,
-        //     validate: {
-        //         len: [1]
-        //       }
-        // },
+        user: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                len: [1]
+              }
+        },
+        genre: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                len: [1]
+              }
+        },
         game: {
             type: DataTypes.STRING,
             allowNull: true,

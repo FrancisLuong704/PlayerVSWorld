@@ -5,7 +5,6 @@ import { Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 let id = {};
 let sender = {};
-let title = {};
 
 class Link extends Component {
     //set state
@@ -16,13 +15,11 @@ class Link extends Component {
     };
     //once component mounts
     componentDidMount() {
-        title = this.props.location.state.titlepassed
         id = this.props.location.state.idpassed
         sender = Auth.getUser();
         this.blogId();
         this.commentFind();
         console.log(`this is the sender:` + sender);
-        console.log("this is the title:" + title);
     }
     //grab the blogId
     blogId = () => {
@@ -32,7 +29,7 @@ class Link extends Component {
     }
     //find all comments related to title of blog
     commentFind = () => {
-        API.commentFind(title)
+        API.commentFind()
             .then(res => this.setState({ comments: res.data }))
             .catch(err => console.log(err))
     }
@@ -49,7 +46,7 @@ class Link extends Component {
         //if a comment exists then call the api route and add it
         if (this.state.comment) {
             API.commentAdd({
-                title: title,
+                title: event,
                 sender: sender,
                 comments: this.state.comment
             })

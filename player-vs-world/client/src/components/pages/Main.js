@@ -27,7 +27,7 @@ class Main extends Component {
                         <div>
                             {this.state.blogs.map(blogs => (
                                 <div key={blogs.id}>
-                                    <h1> <Link to={{ pathname: "/Link", state: {titlepassed: (this, blogs.title)}, state: {idpassed: (this, blogs.id)} }}> {blogs.title} </Link> </h1>
+                                    <h1> <Link to={{ pathname: "/Link", state: {idpassed: (this, blogs.id)} }}> {blogs.title} </Link> </h1>
                                 </div>
                             ))}
                         </div>

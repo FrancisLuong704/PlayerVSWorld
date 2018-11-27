@@ -11,6 +11,7 @@ const express = require("express");
 const path = require("path");
 const jwt = require('jsonwebtoken')
 const passport = require("../utils/passport")
+let dat={}
 // Routes
 // =============================================================
 module.exports = function (app) {
@@ -34,7 +35,7 @@ module.exports = function (app) {
 
   // Post route for a single message
   app.put("/api/mail/get", passport.authenticate('jwt',{session:false}),( req,res) => {
-    console.log("made it")
+  
     const id = req.body.id
     db.Mail.update({
       readed: true
@@ -137,7 +138,7 @@ module.exports = function (app) {
 
   //: friends to a specific user
   app.post("/api/users/friendAdd", passport.authenticate('jwt',{session:false}),( req,res) => {
-    console.log(req.body);
+   
     db.Friend.create({
       user: req.body.user,
       frien: req.body.frien
@@ -165,7 +166,7 @@ module.exports = function (app) {
 
   // add new group to a specific user
   app.post("/api/users/groupAdd", passport.authenticate('jwt',{session:false}),( req,res) => {
-    console.log(req.body);
+    
     db.Profile.create({
       user: req.body.user,
       groups: req.body.groups
@@ -184,7 +185,6 @@ module.exports = function (app) {
       attributes: ['groups'],
     })
       .then(function (dbGroup) {
-        console.log(dbGroup)
         res.json(dbGroup);
       });
   });
@@ -217,7 +217,6 @@ module.exports = function (app) {
       attributes: ['games'],
     })
       .then(function (dbGames) {
-        console.log(dbGames)
         res.json(dbGames);
       });
   });
@@ -378,4 +377,21 @@ module.exports = function (app) {
            res.json(false);}
          });
         })
+
+        app.post("/api/updateProfile",  passport.authenticate('jwt', { session: false }), (req, res) => {
+          if(!req.body.photo.length){
+           dat={description: req.body.description}
+          }
+          else if(!req.body.description.length){
+            dat={photo:req.body.photo}
+           }
+           else{
+            dat ={description: req.body.description, photo: req.body.photo}
+           }
+          db.User.update(dat,{ where: { Username: req.user.Username} })
+          .then (function (returned) {
+
+            res.json(returned)
+      
+         })})
 };

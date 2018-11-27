@@ -100,5 +100,9 @@ export default {
   isItMe: (pass) => {
       console.log("made it to API")
     return axios.post("/api/isItMe", pass,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
-  }
+  },
+  updateProfile:(pass)=> {
+    console.log("made it to API profile")
+  return axios.post("/api/updateProfile", pass,{ headers :{Authorization: `Bearer ${Auth.getToken()}`}});
+},
 };

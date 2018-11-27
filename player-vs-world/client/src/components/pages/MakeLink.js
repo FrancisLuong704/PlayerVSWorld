@@ -44,18 +44,18 @@ class MakeLink extends Component {
         }
     };
 
-    renderRedirect = () => {
-        if (this.state.redirect) {
-          return <Redirect to='/Main' />
-        }
-      }
+    // renderRedirect = () => {
+    //     if (this.state.redirect) {
+    //       return <Redirect to='/Main' />
+    //     }
+    //   }
 
 
     render() {
         return (
             <div className="uk-container">
                 <div className="uk-text-center">
-                {this.renderRedirect()}
+                {/* {this.renderRedirect()} */}
                     <div className="uk-card uk-card-body cardContent uk-width-1-1 uk-margin-medium-top uk-margin-bottom">
                     <h1 className="text-white">Post a Thread!</h1>
                         

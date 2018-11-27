@@ -76,13 +76,13 @@ class Send extends Component {
                             >
                                 Send
                 </FormBtn>
-                {fireRedirect && (<Redirect to = "/Mail/Inbox"/>)};
+                {fireRedirect && (<Redirect to = "/Mail/Inbox"/>)}
                         </form>
                         
                     </Col>
                 </Row>
             </Container>
-        );
+        )
     }
 }
 export default Send;

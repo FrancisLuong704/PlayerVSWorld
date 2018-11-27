@@ -78,7 +78,8 @@ class App extends Component {
           <PrivateRoute path="/Mail" component={Mail} token={this.state.token} />
           <PrivateRoute path="/Inbox" component={inbox} token={this.state.token} />
           <PrivateRoute path="/Search" component={Search} token={this.state.token} />
-          <footer className="uk-width-1-1 uk-margin-top uk-padding uk-text-center"><img className="footer-logo" src={require('../src/assets/images/footer-logo.png')} /></footer>
+          <br></br>
+          <footer className="uk-width-1-1 uk-margin-top uk-padding uk-text-center footer"><img className="footer-logo" src={require('../src/assets/images/footer-logo.png')} /></footer>
         </div>
         
       </Router>

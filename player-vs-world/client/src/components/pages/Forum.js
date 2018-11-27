@@ -4,7 +4,7 @@ import "./Forum.css"
 import {Link} from "react-router-dom";
 
 const Forum = () => (
-    <div>
+    <div className="uk-margin-bottom">
         <div className="uk-section">
             <div className="uk-container uk-text-center uk-width-1-1 uk-padding bg-grey " >
                 <h1 className='uk-margin-large text-white'>The Forum</h1>

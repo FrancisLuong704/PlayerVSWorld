@@ -51,10 +51,11 @@ class SignUp extends Component {
       }
     render() {
         return (
-                <div className="uk-container">
-                    <div className="uk-text-center">   
-                    {this.renderRedirect()}                 
-                        <div className="uk-card uk-card-body cardContent uk-width-1-1 uk-margin-medium-top">
+                <div className="uk-container uk-margin-bottom">
+                    <div className="uk-text-center uk-grid uk-margin-large-bottom">   
+                        {this.renderRedirect()}
+                        <div className="uk-width-1-3 uk-padding" ></div>                 
+                        <div className="uk-card uk-card-body cardContent uk-width-1-3 uk-margin-medium-top">
                             <form>
                                 <Input
                                     value= {this.state.firstName}
@@ -95,6 +96,7 @@ class SignUp extends Component {
                                 </FormBtn>
                             </form>
                         </div>
+                        <div className="uk-width-1-3 uk-padding"></div>
                     </div>
                 </div>
         )

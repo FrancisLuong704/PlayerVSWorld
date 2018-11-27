@@ -9,6 +9,7 @@ import Main from "./components/pages/Main";
 import Link from "./components/pages/Link";
 import MakeLink from "./components/pages/MakeLink";
 import inbox from "./components/pages/Inbox";
+import Search from "./components/pages/Search";
 
 import API from "./utils/API";
 import Inbox from './components/pages/Inbox'
@@ -76,7 +77,9 @@ class App extends Component {
           <PrivateRoute exact path="/Games" component={Games} token={this.state.token} />
           <PrivateRoute path="/Mail" component={Mail} token={this.state.token} />
           <PrivateRoute path="/Inbox" component={inbox} token={this.state.token} />
-          <footer className="uk-width-1-1 uk-margin-top uk-padding uk-text-center"><img className="footer-logo" src={require('../src/assets/images/footer-logo.png')} alt=""/></footer>
+          <PrivateRoute path="/Search" component={Search} token={this.state.token} />
+          <br></br>
+          <footer className="uk-width-1-1 uk-margin-top uk-padding uk-text-center footer"><img className="footer-logo" src={require('../src/assets/images/footer-logo.png')} /></footer>
         </div>
         
       </Router>

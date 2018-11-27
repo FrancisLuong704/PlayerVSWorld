@@ -142,8 +142,8 @@ module.exports = function (app) {
       user: req.body.user,
       frien: req.body.frien
     })
-      .then(function (dbPost) {
-        res.json(dbPost);
+      .then(function (dbFriend) {
+        res.json(dbFriend);
       });
   });
 
@@ -160,6 +160,8 @@ module.exports = function (app) {
         res.json(dbPost);
       });
   });
+
+
 
   // add new group to a specific user
   app.post("/api/users/groupAdd", passport.authenticate('jwt',{session:false}),( req,res) => {
@@ -241,7 +243,7 @@ module.exports = function (app) {
       });
   });
 
-  //get specific blog
+  //get specific blog by id
   app.get("/api/blogs/:id", function (req, res) {
     db.Blog.findAll({
       where: {
@@ -253,11 +255,12 @@ module.exports = function (app) {
       });
   });
 
+
   //this finds all blogs by game
-  app.get("/api/blogs/blogGame", function (req, res) {
+  app.get("/api/blogs/blogGame/:game", function (req, res) {
     db.Blog.findAll({
       where: {
-        game: req.body.game
+        game: req.params.game
       }
     })
       .then(function (dbGame) {
@@ -266,14 +269,38 @@ module.exports = function (app) {
   });
 
   //this finds all blogs by genre
-  app.get("/api/blogs/blogGenre", function (req, res) {
+  app.get("/api/blogs/blogGenre/:genre", function (req, res) {
     db.Blog.findAll({
       where: {
-        genre: req.body.genre
+        genre: req.params.genre
       }
     })
       .then(function (dbGenre) {
         res.json(dbGenre)
+      });
+  });
+
+  //post a new comment for a blog
+  app.post("/api/blogs/comments", function (req, res) {
+    db.Comments.create({
+      title: req.body.title,
+      comments: req.body.comments,
+      sender: req.body.sender
+    })
+    .then(function (dbComment) {
+      res.json(dbComment)
+    });
+  });
+
+  //get all comments for a blog
+  app.get("/api/blogs/getComments", ( req,res) => {
+    db.Comments.findAll({
+      where: {
+        title: req.body.title
+      }
+    })
+      .then(function (dbBlog) {
+        res.json(dbBlog)
       });
   });
 

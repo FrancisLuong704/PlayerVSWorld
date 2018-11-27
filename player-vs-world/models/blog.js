@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
     var Blog = sequelize.define("Blog", {
         title: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [1]
               }
@@ -16,17 +16,20 @@ module.exports = function(sequelize, DataTypes) {
         // },
         game: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [1]
             }
         },
         content: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [1]
             }
+        },
+        comment: {
+            type: DataTypes.TEXT,
         }
     });
     return Blog;

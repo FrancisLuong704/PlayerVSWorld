@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Auth from '../utils/auth';
 import "./NavTabs.css";
+import Searchbar from "./Searchbar";
+
 
 
 const NavTabs = props => (
@@ -12,10 +14,7 @@ const NavTabs = props => (
                 <div className="uk-navbar-item uk-logo"><img className="nav-logo" src={require('../assets/images/PlayerVsWorldLogo.png')} alt=""/></div>
                 {/* Search Bar is here */}
                 <div className="uk-navbar-item">
-                    <form>
-                        <input className="uk-input uk-form-width-large" type="text" placeholder="Search Games/Forums/Dashboards" />
-                        <button className="uk-button uk-button-default "><label className="search-text">Search</label></button>
-                    </form>
+                    <Searchbar />
                 </div>
             </div>
                        {/* switching over to the right side of navbar */}
@@ -39,10 +38,7 @@ const NavTabs = props => (
                 <div className="uk-navbar-item uk-logo"><img className="nav-logo" src={require('../assets/images/PlayerVsWorldLogo.png')} alt=""/></div>
                 {/* Search Bar is here */}
                 <div className="uk-navbar-item">
-                    <form>
-                        <input className="uk-input uk-form-width-large" type="text" placeholder="Search Games/Forums/Dashboards" />
-                        <button className="uk-button uk-button-default "><label className="search-text">Search</label></button>
-                    </form>
+                    <Searchbar />
                 </div>
                 <div className="uk-navbar-item">
                   Welcome! {Auth.getUser()}
@@ -120,6 +116,6 @@ const NavTabs = props => (
             </div>
         </nav>
 
-            );
+);
             
-            export default NavTabs;
+ export default NavTabs;

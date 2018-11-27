@@ -40,7 +40,7 @@ class MakeLink extends Component {
             <div className="uk-container">
                 <div className="uk-text-center">
                 
-                    <div className="uk-card uk-card-body cardContent uk-width-1-1 uk-margin-medium-top">
+                    <div className="uk-card uk-card-body cardContent uk-width-1-1 uk-margin-medium-top uk-margin-bottom">
                     <h1 className="text-white">Post a Thread!</h1>
                         
                         <form className="uk-form">

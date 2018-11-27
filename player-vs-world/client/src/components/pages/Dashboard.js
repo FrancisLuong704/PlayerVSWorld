@@ -73,7 +73,7 @@ class Dashboard extends Component {
   //findfriends
   friendFind = () => {
     console.log("friends stuff", this.state.user)
-    API.friendfind({ user: this.state.user })
+    API.friendFind({user:this.state.user})
       .then(res => {
         if (res.data !== null) {
           this.setState({ friends: res.data })
@@ -103,7 +103,7 @@ class Dashboard extends Component {
   render() {
     return (
       // page container
-      <div className="uk-container page-container">
+      <div className="uk-container page-container uk-margin-medium-top uk-margin-bottom">
         {/* title and dashboard title */}
 
         <h1 className="uk-margin-medium-left prof">Profile</h1>
@@ -111,7 +111,7 @@ class Dashboard extends Component {
         <div className="cardRows">
           {/* friend card */}
           <div className="uk-width-1-3 uk-grid-collapse uk-grid uk-margin-medium">
-            <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
+            <div className="uk-card uk-card-transparent dashboardCards uk-card-body uk-margin-medium">
               <div>
                 <h1 className="uk-card-title cardTitle">{this.state.user}</h1>
               </div>
@@ -132,7 +132,7 @@ class Dashboard extends Component {
           </div>
           {/* game card */}
           <div className="uk-width-2-3 cardBody uk-grid-collapse uk-grid uk-margin-medium">
-            <div className="uk-card uk-card-transparent dashboardCards uk-card-body">
+            <div className="uk-card uk-card-transparent dashboardCards uk-card-body uk-margin-medium uk-margin-medium-left">
               <h2 className="uk-card-title cardTitle">Description</h2>
               {this.state.description.length ? (
                 <div>
@@ -146,7 +146,7 @@ class Dashboard extends Component {
         </div>
         <div className="cardRows">
           {/* friend card */}
-          <div className="uk-width-1-3 uk-grid-collapse uk-grid ">
+          <div className="uk-width-1-3 uk-grid-collapse uk-grid">
             <div className="uk-card uk-card-transparent dashboardCards uk-card-body uk-margin-medium">
               <h2 className="uk-card-title cardTitle">Friends</h2>
               {this.state.friends.length ? (

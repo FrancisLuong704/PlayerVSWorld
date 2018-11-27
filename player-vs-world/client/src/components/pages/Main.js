@@ -25,17 +25,9 @@ class Main extends Component {
                 <div className="uk-container uk-width-1-2 container">
                     {this.state.blogs.length ? (
                         <div>
-<<<<<<< HEAD
-                            {this.state.blogs.map(blog => (
-                                <div className="uk-card-default uk-padding postCard uk-margin">
-                                    <div data-id={blog.id} key={blog.id}>
-                                        <h1> <Link to={{ pathname: "/Link", state: {passed: (this, blog.id)}}}> {blog.title} </Link> </h1>
-                                    </div>
-=======
                             {this.state.blogs.map(blogs => (
                                 <div key={blogs.id}>
                                     <h1> <Link to={{ pathname: "/Link", state: {titlepassed: (this, blogs.title)}, state: {idpassed: (this, blogs.id)} }}> {blogs.title} </Link> </h1>
->>>>>>> 6a7eaeacd232ff5ce48797ba5b5a4231789a92c6
                                 </div>
                             ))}
                         </div>

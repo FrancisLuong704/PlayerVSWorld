@@ -2,53 +2,17 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import "./Dashboard.css";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import Auth from "../../utils/auth"
 let user = ""
-=======
-import Auth from "../../utils/auth";
-let user = {};
-
->>>>>>> 6a7eaeacd232ff5ce48797ba5b5a4231789a92c6
 class Dashboard extends Component {
   //set state
   state = {
     friends: [],
     groups: [],
     games: [],
-<<<<<<< HEAD
-    photo: "",
-    description: "",
-  }
-  //after component mounts
-  componentDidMount() {
-    user = Auth.getUser()
-    //this.friendFind();
-    this.groupFind();
-    this.gamesFind();
-    this.findTheInfo()
-  }
-  findTheInfo = () => {
-    API.findeProfile({ userName: user })
-      .then(res => {
-        this.setState({
-          photo: res.data.photo,
-          description: res.data.description
-        })
-        console.log(this.state.photo, this.state.description)
-      })
-      .catch(err => console.log(err))
-  }
-
-  // find friends
-  friendFind = () => {
-    console.log("made it this far")
-    API.friendFind("Joel")
-      .then(res => this.setState({ friends: res.data }))
-      .catch(err => console.log(err))
-  }
-=======
+    photo: [],
+    description: []
   }
   //after component mounts
   componentDidMount() {
@@ -66,7 +30,6 @@ class Dashboard extends Component {
       .then(res => this.setState({ friends: res.data }))
       .catch(err => console.log(err))
   }
->>>>>>> 6a7eaeacd232ff5ce48797ba5b5a4231789a92c6
   //find groups
   groupFind = () => {
     API.groupFind(user)

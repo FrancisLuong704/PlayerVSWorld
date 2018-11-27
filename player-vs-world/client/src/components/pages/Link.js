@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-<<<<<<< HEAD
-let id = {}
-=======
 import Auth from "../../utils/auth";
 import { Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 let id = {};
 let sender = {};
 let title = {};
->>>>>>> 6a7eaeacd232ff5ce48797ba5b5a4231789a92c6
 
 class Link extends Component {
     //set state
@@ -65,7 +61,6 @@ class Link extends Component {
     render() {
 
         return (
-<<<<<<< HEAD
             <div className="uk-container uk-margin-large-top">
                 <div className="uk-card-default uk-padding">
                     {this.state.blog.length ? (
@@ -80,55 +75,36 @@ class Link extends Component {
                         </div>
                     ) : (
                             <h3>No Results to Display</h3>
-                        )}
+                        )} {/* create a form for inputting comments */}
+                        <form>
+                            <TextArea
+                                value={this.state.comment}
+                                onChange={this.handleInputChange}
+                                name="comment"
+                                placeholder="Comment Here"
+                            />
+                            <FormBtn
+                                disabled={!(this.state.comment)}
+                                onClick={this.handleFormSubmit}
+                            >
+                                Add Comment!
+                            </FormBtn>
+                        </form>
+                        {/* map through comments and post */}
+                        {this.state.comments.length ? (
+                            <div>
+                                {this.state.comments.map(comments => (
+                                    <div key={comments.id}>
+                                        <h1> {comments.comments} </h1>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                                <h3>.</h3>
+                            )}
                 </div>
                     
             </div>
-=======
-            <Container>
-                {/* map through blog and post it */}
-                {this.state.blog.length ? (
-                    <div>
-                        {this.state.blog.map(blog => (
-                            <div key={blog.id}>
-                                <h1> {blog.title} </h1>
-                                <h2> {blog.game} </h2>
-                                <h3> {blog.content} </h3>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                        <h3>No Results to Display</h3>
-                    )}
-                {/* create a form for inputting comments */}
-                <form>
-                    <TextArea
-                        value={this.state.comment}
-                        onChange={this.handleInputChange}
-                        name="comment"
-                        placeholder="Comment Here"
-                    />
-                    <FormBtn
-                        disabled={!(this.state.comment)}
-                        onClick={this.handleFormSubmit}
-                    >
-                        Add Comment!
-                    </FormBtn>
-                </form>
-                {/* map through comments and post */}
-                {this.state.comments.length ? (
-                    <div>
-                        {this.state.comments.map(comments => (
-                            <div key={comments.id}>
-                                <h1> {comments.comments} </h1>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                        <h3>.</h3>
-                    )}
-            </Container>
->>>>>>> 6a7eaeacd232ff5ce48797ba5b5a4231789a92c6
         )
     }
 }

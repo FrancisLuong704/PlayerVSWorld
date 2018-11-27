@@ -18,6 +18,7 @@ import Forum from "./components/pages/Forum";
 import './uikit/uikit.css';
 import './App.css';
 import Mail from "./components/pages/Mail.js";
+import Games from "./components/pages/games"
 
 
 class App extends Component {
@@ -60,6 +61,7 @@ class App extends Component {
           {/* <Route exact path="/login" render={() => <LoginPage token={this.state.token} />} /> */}
           <NavTabs token={this.state.token} />
           <PrivateRoute exact path="/Dashboard" component={Dashboard} token={this.state.token} />
+          <PrivateRoute exact path="/Dashboard/Friend" component={Dashboard} token={this.state.token} />
           <Route exact path="/Login" render={() => <Login token={this.state.token} />} />
           <PrivateRoute exact path="/Survey" component={Survey} token={this.state.token} />
           <Route exact path="/SignUp" render={(routeProps) => (<SignUp {...routeProps} token={this.state.token} />)}
@@ -72,6 +74,7 @@ class App extends Component {
           <PrivateRoute exact path="/Forum" component={Forum} token={this.state.token} />
           <PrivateRoute exact path="/Link" component={Link} token={this.state.token} />
           <PrivateRoute exact path="/MakeLink" component={MakeLink} token={this.state.token} />
+          <PrivateRoute exact path="/Games" component={Games} token={this.state.token} />
           <PrivateRoute path="/Mail" component={Mail} token={this.state.token} />
           <PrivateRoute path="/Inbox" component={inbox} token={this.state.token} />
           <PrivateRoute path="/Search" component={Search} token={this.state.token} />

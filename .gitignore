@@ -39,5 +39,7 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/windows,visualstudiocode
 
-
+.env
+.env.development
 /node_modules
+node_modules/

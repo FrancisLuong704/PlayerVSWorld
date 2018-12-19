@@ -37,7 +37,7 @@ class Login extends Component {
                         user = res.data
                         Auth.login(token, user);
                     })
-                
+
             }
             )
             .catch(error => console.error('Error:', error));
@@ -78,6 +78,7 @@ class Login extends Component {
                         </a>
                     </div>
                 </form>
+                <div className="space"> </div>
             </div>
         )
     }

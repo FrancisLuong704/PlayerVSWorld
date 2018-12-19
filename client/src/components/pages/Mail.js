@@ -36,6 +36,7 @@ const Mail = () => (
                 <Route exact path="/Mail/Trash" component={Inbox} />
             </div>
         </div>
+        <div className="space"></div>
     </div>
 );
 

@@ -16,10 +16,9 @@ body{
     background-size: cover;
     min-height: 100vh; 
     position: relative;
-
+    height: 100%; 
 
 }
-
 h1,
 h2,
 h3,
@@ -32,12 +31,28 @@ p {
 footer {
     background: #131527;
     position: absolute;
-    left: 0;
-    bottom: -10;
-    right: 0;
+   
 }
 
 .footer-logo {
     width: 200px;
     clear: both;
 }
+/* .Site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+} */
+.Site-content {
+    /* flex: 1 0 auto;
+    padding: var( — space) var( — space) 0;
+    width: 100%; */
+    /* min-height: 1000px; */
+}
+/* .Site-content:after {
+    content: ‘\00a0’;
+    display: block;
+    margin-top: var( — space);
+    height: 0;
+    visibility: hidden;
+} */

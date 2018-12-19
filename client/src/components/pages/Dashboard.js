@@ -18,12 +18,17 @@ class Dashboard extends Component {
     description: "",
     user: "",
     friend: false,
-    own: false
+    own: false,
+    inFriend: false,
+    prevURL: ""
 
   }
   //after component mounts
   componentDidMount() {
-    if (!this.props.location.state || !this.props.location.state.passed) {
+    this.setState({prevURL:window.location.href})
+    console.log(window.location.href.split('/')[5], "this is in friends")
+    
+    if (window.location.href.split('/')[5]=== undefined) {
       this.setState({
         user: Auth.getUser()
       }, () => {
@@ -32,18 +37,26 @@ class Dashboard extends Component {
 
     }
     else {
+      
       this.setState({
-        user: this.props.location.state.passed
+        user: window.location.href.split('/')[5]
       }, () => {
         this.startUpScript();
       });
     }
-
-
-
-
-
   }
+  
+  componentDidUpdate() {
+    if (window.location.href !== this.state.prevURL) {
+      this.setState({
+        prevURL: window.location.href,
+        user: window.location.href.split('/')[5]
+      }, () => {
+        this.startUpScript();
+      });
+    }
+  }
+
   startUpScript = () => {
     this.setState({
       friends: [],
@@ -235,7 +248,7 @@ class Dashboard extends Component {
                     <div key={user.frien}>
 
                       <strong className="uk-text-large">
-                        <Link to={{ pathname: "/Dashboard/Friend/", state: { passed: (this, user.frien) } }}><div onClick={() => {
+                        <Link to={`/Dashboard/Friend/${ user.frien}`}><div onClick={() => {
                           this.difUser(user.frien)
                         }}>{user.frien}</div></Link>
                       </strong>

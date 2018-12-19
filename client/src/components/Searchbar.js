@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import {Redirect, Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 class Searchbar extends Component {
     state = {
@@ -10,12 +10,10 @@ class Searchbar extends Component {
 
          
     handleInputChange = event => {
-        console.log(event.target)
         const { name, value } = event.target
         this.setState({
             [name]: value
         })
-        console.log(this.state.query)
     }
   
     handleSubmit = event => {
@@ -23,6 +21,7 @@ class Searchbar extends Component {
         const data = {
             user: this.state.query,
         }
+        
         console.log("what is data",data)
         API.userSearch(data)
         .then(res => {
@@ -48,8 +47,10 @@ class Searchbar extends Component {
     }
     renderRedirect = () => {
         if (this.state.redirect) {
+            console.log(this.state.inFriend, "the state of fiends")
             console.log("made it in redirect")
-            return <Redirect to={{ pathname: "/Dashboard/Friend/", state: { passed: (this, this.state.query) }}}/>
+             this.setState({redirect:false})
+            return <Redirect to={`/Dashboard/Friend/${this.state.query}`}/>
         }
       }
     

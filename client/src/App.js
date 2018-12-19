@@ -69,7 +69,7 @@ class App extends Component {
               <div className="main" >
                 <PrivateRoute exact path="/" component={Dashboard} token={this.state.token} />
                 <PrivateRoute exact path="/Dashboard" component={Dashboard} token={this.state.token} />
-                <PrivateRoute exact path="/Dashboard/Friend" component={Dashboard} token={this.state.token} />
+                <PrivateRoute path="/Dashboard/Friend" component={Dashboard} token={this.state.token} />
                 <PrivateRoute exact path="/Dashboard/Search" component={Dashboard} token={this.state.token} />
                 <Route exact path="/Login" render={() => <Login token={this.state.token} />} />
                 <PrivateRoute exact path="/Survey" component={Survey} token={this.state.token} />
@@ -92,12 +92,12 @@ class App extends Component {
               </div>
             </div>
             
-            <div stickys>
+           
               <footer className="uk-width-1-1 uk-margin-top uk-padding uk-text-center " >
                 <img className="footer-logo" src={require('../src/assets/images/footer-logo.png')} alt="" />
               </footer>
             </div>
-        </div>
+      
       </Router>
 
     )
